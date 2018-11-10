@@ -36,6 +36,7 @@ class User{
             throw new \Exception("Usuário inexistente ou senha inválida", 1);
         }
         $dados = $result[0];
+        
         if(password_verify($senha , $dados["senha"]) == true){
             $user = new User();
             $user->setId($dados["id"]);

@@ -1,3 +1,4 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?>
 <!DOCTYPE html>
 <html>
 
@@ -14,29 +15,37 @@
 </head>
 
 <body class="">
-    <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post">
-        <div class="">
-            
 
-            <h1 class="h3 mb-3 font-weight-normal text-center">Redefinir sua senha</h1>
-            <p class="mb-3 h5">Para redefinir sua senha, insira o seu endereço de email:</p>
+    <div id="erros">
+        <?php $counter1=-1;  if( isset($erros) && ( is_array($erros) || $erros instanceof Traversable ) && sizeof($erros) ) foreach( $erros as $key1 => $value1 ){ $counter1++; ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+            </div>
+        <?php } ?>
+    </div>
+    
+    <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post" action="/login">
+        <div class="text-center">
+            <img class="mb-4" src="/res/login.png" alt="" width="100" />
+
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <label for="email" class="sr-only">Endereço de email</label>
             <input type="email" id="email" name="email" class="form-control" placeholder="Endereço de email" required autofocus>
+            <label for="pass" class="sr-only">Senha</label>
+            <input type="password" id="pass" name="pass" class="form-control" placeholder="Senha" required>
+            <div class=" form-group text-justify mt-3">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="lembrar" name="lembrar" >
+                    <label class="custom-control-label" for="lembrar">Continuar Logado</label>
 
+                </div>
+            </div>
         </div>
         
-        
-        <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Redefinir</button>
+        <a href="#" class="ml-1">Esqueci a senha</a>
+        <button class="btn btn-lg btn btn-success btn-block mt-3" type="submit">Entrar</button>
         
     </form>
-
-    
-        <div class="col-sm-4 mx-auto mt-5">
-            <p>Foi enviado um email com as instrunçoes para redefinir a senha para o email: <span class="text-danger"> <?= $_POST["email"] ?> </span> caso ele esteja registrado no sistema. </p>
-            <a href="login.php">Voltar</a>
-        </div>
-}
-?>
 
 
 

@@ -6,7 +6,7 @@
         const HOST_NAME = "localhost";
         const DATABASE_NAME = "gestaoLivrosIFRS";
         const DATABASE_USER_NAME = "root";
-        const DATABASE_PASSWORD= "algumasenhaboa";
+        const DATABASE_PASSWORD= "";
 
         # Informações sobre o email:
         const EMAIL_HOST = "smtp.gmail.com";

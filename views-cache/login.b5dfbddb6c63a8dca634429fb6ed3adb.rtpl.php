@@ -1,4 +1,4 @@
-
+<?php if(!class_exists('Rain\Tpl')){exit;}?>
 <!DOCTYPE html>
 <html>
 
@@ -17,11 +17,11 @@
 <body class="">
 
     <div id="erros">
-        {loop="$erros"}
+        <?php $counter1=-1;  if( isset($erros) && ( is_array($erros) || $erros instanceof Traversable ) && sizeof($erros) ) foreach( $erros as $key1 => $value1 ){ $counter1++; ?>
             <div class="alert alert-danger" role="alert">
-                {$value}
+                <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
             </div>
-        {/loop}
+        <?php } ?>
     </div>
     
     <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post" action="/login">

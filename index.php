@@ -5,6 +5,7 @@
     use Slim\Slim;
     use App\Model\User;
     use App\Controllers\UserController;
+    use App\Page;
     session_start();
 
     $app = new Slim();
@@ -12,8 +13,11 @@
 
     $app->get("/", function(){
         User::verifyLogin();
-        echo "Funcionando";
-        var_dump($_SESSION);
+        $page = new page(array(
+            "header" => true,
+            "footer" => false
+        ));
+
     });
 
     $app->get("/login", function(){

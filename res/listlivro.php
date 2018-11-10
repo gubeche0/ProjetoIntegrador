@@ -14,51 +14,10 @@
 
 <body>
 
-    
-
-    <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark bg-secondary mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#">Vaccinare</a>
-            
-            <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"> 
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Crianças</a>
-                        <div class="dropdown-menu" aria-labelledby="Criancas">
-                            <a class="dropdown-item" href="listarcriancas.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cadcrianca.php"><i class="fas fa-plus"></i> Adicionar</a>
-                        </div>
-                    </li>
-                    
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="Vacinas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-syringe" style="color:white;"></i> Vacinas</a>
-                        <div class="dropdown-menu" aria-labelledby="Vacinas">
-                            <a class="dropdown-item" href="listvacina.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cadvacina.php"><i class="fas fa-plus"></i> Adicionar</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sair.php"><i class="fas fa-sign-out-alt"></i> Sair</a>
-                    </li>
-                </ul>
-
-
-                
-            </div>
-
-        </div>
-    </nav>
-
-
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title text-center my-3">Gestão de Vacinas</h1>
+                <h1 class="panel-title text-center my-3">Gestão de Livros</h1>
             </div>
             <div class="panel-body">
                 <form action="listvacina.php" method="post">
