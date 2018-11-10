@@ -11,7 +11,8 @@ class Page{
     private $defaults = [
         "header" => true,
         "footer" => true,
-        "data" =>[]
+        "data" =>[],
+        "page" => "/"
     ];
 
     public function __construct($opts = array()){

@@ -6,7 +6,7 @@ use App\Page;
 use App\Model\User;
 
 
-class UserController{
+class UserController extends Controller{
 
     public static function index(){
         $page = new Page(array(
@@ -38,6 +38,10 @@ class UserController{
         User::logout();
         header("Location: /login");
         exit;
+    }
+
+    public static function verifyLogin(){
+        User::verifyLogin();
     }
 
 }
