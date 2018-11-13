@@ -6,6 +6,8 @@ use Rain\Tpl;
 
 class Page{
 
+    const MsgError = "msgErros";
+    const MsgSuccess = "msgSuccess";
     private $tpl;
     private $options = [];
     private $defaults = [
@@ -55,6 +57,28 @@ class Page{
 
         if($this->options["footer"] === true) $this->tpl->draw("footer");
 
+    }
+
+    public static function getErros(){
+        $erros = (isset($_SESSION[Page::MsgError]) && $_SESSION[Page::MsgError])? $_SESSION[Page::MsgError] : "";
+        $_SESSION[Page::MsgError] = null;
+        return $erros;
+        
+    }
+
+    public static function setErros($msg){
+        $_SESSION[Page::MsgError][] = $msg;
+
+    }
+
+    public static function getSuccess(){
+        $erros = (isset($_SESSION[Page::MsgSuccess]) && $_SESSION[Page::MsgSuccess])? $_SESSION[Page::MsgSuccess] : "";
+        $_SESSION[Page::MsgSuccess] = null;
+        return $erros;
+    }
+
+    public static function setSuccess($msg){
+        $_SESSION[Page::MsgSuccess][] = $msg;
     }
 
 }

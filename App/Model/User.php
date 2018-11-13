@@ -55,7 +55,12 @@ class User{
         $_SESSION[User::SESSION] = null;
     }
 
-    
+    public static function getIdBySession(){
+        return $_SESSION[User::SESSION]["id"];
+    }
+
+
+
 
     public function getId(){
 

@@ -1,29 +1,110 @@
 <?php
 
 namespace App\Model;
+use App\Model\Database;
+use App\Controllers\UserController;
 
 class Aluno{
 
     private $matricula;
     private $nome;
-    private $turma;
     private $email;
     private $curso;
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT * FROM alunos WHERE nome LIKE :QUERY ORDER BY ASC", array(
+        return $sql->select("SELECT alunos.nome, cursos.abreviacao as curso, alunos.matricula, alunos.email FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.nome LIKE :QUERY ORDER BY alunos.matricula ASC", array(
             ":QUERY" => ("%" . $query . "%")
         ));
-
     }
 
-    public function loadByMatricula($id){
+    public function loadById(){
         $sql = new Database();
-        $result = $sql->select("SELECT * FROM alunos WHERE ");
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula()
+        ));
+
+        if(count($result) == 0){
+            return false;
+        }
+
+        $this->setValues($result[0]);
+        
+        
         
     }
 
+    public function create(){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula()
+        ));
+        
+        if(count($result) > 0){
+            throw new \Exception("Aluno(a) já cadastrado(a)!", 1);
+        }
+
+        return $sql->query("INSERT INTO alunos(matricula, nome, email, idcurso, idfuncionario) VALUES (:MATRICULA , :NOME , :EMAIL , :IDCURSO , :IDFUNCIONARIO)", array(
+            ":MATRICULA" => $this->getMatricula(),
+            ":NOME" => $this->getNome(),
+            ":EMAIL" => $this->getEmail(),
+            ":IDCURSO" => $this->getCurso(),
+            ":IDFUNCIONARIO" => User::getIdBySession()
+        ));
+
+        
+        
+    }
+
+    public function update(){
+        $sql = new Database();
+
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula()
+        ));
+        
+        if(count($result) < 1){
+            throw new \Exception("Aluno não cadastrado!");
+        }
+
+        $sql->query("UPDATE alunos set nome=:NOME, email=:EMAIL, idcurso=:IDCURSO  WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula(),
+            ":NOME" => $this->getNome(),
+            ":EMAIL" => $this->getEmail(),
+            ":IDCURSO" => $this->getCurso()
+        ));
+        
+    }
+
+    public function delete(){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula()
+        ));
+
+        if(count($result) != 1){
+            throw new \Exception("Aluno não cadastrado!");
+        }
+        $sql->query("DELETE FROM alunos where matricula = :MATRICULA", array(
+            ":MATRICULA" => $this->getMatricula()
+        ));
+    }
+
+    public function setValues($values){
+        $this->setMatricula($values["matricula"]);
+        $this->setNome($values["nome"]);
+        $this->setEmail($values["email"]);
+        $this->setCurso($values["idcurso"]);
+    }
+
+    public function getValues(){
+        return array(
+            "matricula" => $this->getMatricula(),
+            "nome" => $this->getNome(),
+            "email" => $this->getEmail(),
+            "idcurso" => $this->getCurso(),
+        );
+    }
     
 
     /**
@@ -63,7 +144,7 @@ class Aluno{
     {
         $this->matricula = $matricula;
 
-        return $this;
+    
     }
 
     /**
@@ -82,26 +163,6 @@ class Aluno{
     public function setNome($nome)
     {
         $this->nome = $nome;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of turma
-     */ 
-    public function getTurma()
-    {
-        return $this->turma;
-    }
-
-    /**
-     * Set the value of turma
-     *
-     * @return  self
-     */ 
-    public function setTurma($turma)
-    {
-        $this->turma = $turma;
 
         return $this;
     }

@@ -14,6 +14,7 @@
                 Config::DATABASE_USER_NAME,
                 Config::DATABASE_PASSWORD
             );
+            $this->query("SET NAMES 'utf8'");
         }
 
         private function setParams($statement, $parameters = array()){
@@ -38,7 +39,8 @@
     
             $this->setParams($stmt, $params);
     
-            $stmt->execute();
+            return $stmt->execute();
+            
     
         }
     

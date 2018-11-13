@@ -20,11 +20,13 @@
     });
 
     $app->get("/login", function(){
-        UserController::index();
+        $user = new UserController();
+        $user->pageIndex();
     });
 
     $app->post("/login", function(){
-       UserController::login($_POST["email"], $_POST["pass"]);
+        $user = new UserController();
+        $user->login($_POST["email"], $_POST["pass"]);
     });
 
     $app->get("/logout", function(){
@@ -34,50 +36,61 @@
     $app->get("/alunos", function(){
         UserController::verifyLogin();
         $aluno = new AlunoController();
-        $aluno->index();
+        $aluno->pageIndex();
         
     });
 
     $app->get("/alunos/create", function(){
         UserController::verifyLogin();        
         $aluno = new AlunoController();
-        $aluno->index();
+        $aluno->pageCreate();
+        
     });
 
     $app->post("/alunos/create", function(){
-        
+        UserController::verifyLogin();
+        $aluno = new AlunoController();
+        $aluno->create();
     });
 
+
     $app->get("/alunos/:id/edit", function($id){
-        
+        UserController::verifyLogin();
+        $aluno = new AlunoController();
+        $aluno->pageEdit($id);
     });
 
     $app->post("/alunos/:id/edit", function($id){
+        UserController::verifyLogin();
+        $aluno = new AlunoController();
+        $aluno->update();
         
     });
 
     $app->get("/alunos/:id/delete", function($id){
-        
+        UserController::verifyLogin();
+        $aluno = new AlunoController();
+        $aluno->delete($id);
     });
 
     $app->get("/emprestimos", function(){
-
+        UserController::verifyLogin();
     });
     
     $app->get("/emprestimos/create", function(){
-
+        UserController::verifyLogin();
     });
 
     $app->post("/emprestimos/create", function(){
-
+        UserController::verifyLogin();
     });
 
     $app->get("/emprestimos/:id/edit", function($id){
-        
+        UserController::verifyLogin();
     });
 
     $app->post("/emprestimos/:id/edit", function($id){
-        
+        UserController::verifyLogin();
     });
-
+    
     $app->run();

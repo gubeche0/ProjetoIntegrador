@@ -17,8 +17,13 @@
 <body>
 
     <div id="erros">
-        {loop="$erros"}
+        {loop="App\Page::getErros()"}
             <div class="alert alert-danger" role="alert">
+                {$value}
+            </div>
+        {/loop}
+        {loop="App\Page::getSuccess()"}
+            <div class="alert alert-success" role="alert">
                 {$value}
             </div>
         {/loop}

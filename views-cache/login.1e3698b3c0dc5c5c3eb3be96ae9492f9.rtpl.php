@@ -17,9 +17,17 @@
 <body>
 
     <div id="erros">
-        <?php $counter1=-1;  if( isset($erros) && ( is_array($erros) || $erros instanceof Traversable ) && sizeof($erros) ) foreach( $erros as $key1 => $value1 ){ $counter1++; ?>
+        <?php $counter1=-1; $newvar1=App\Page::getErros(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
 
             <div class="alert alert-danger" role="alert">
+                <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
+            </div>
+        <?php } ?>
+
+        <?php $counter1=-1; $newvar1=App\Page::getSuccess(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+
+            <div class="alert alert-success" role="alert">
                 <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
 
             </div>
