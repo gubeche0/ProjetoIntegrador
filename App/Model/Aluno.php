@@ -2,7 +2,7 @@
 
 namespace App\Model;
 use App\Model\Database;
-use App\Controllers\UserController;
+
 
 class Aluno{
 

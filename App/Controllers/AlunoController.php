@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Page;
 use App\Model\Aluno;
+use App\Model\Curso;
 
 
 class AlunoController extends Controller{
@@ -28,7 +29,9 @@ class AlunoController extends Controller{
         $this->getPage("alunos", array(
             "footer" => false
         ));
-        $this->page->setTpl("alunos-form");
+        $this->page->setTpl("alunos-form", array(
+            "cursos" => Curso::listAll()
+        ));
     }
 
     public function pageEdit($id){
@@ -38,7 +41,8 @@ class AlunoController extends Controller{
             "footer" => false
         ));
         $this->page->setTpl("alunos-form", array(
-            "aluno" => $this->aluno->listOne($id)
+            "aluno" => $this->aluno->listOne($id),
+            "cursos" => Curso::listAll()
         ));
         
     }

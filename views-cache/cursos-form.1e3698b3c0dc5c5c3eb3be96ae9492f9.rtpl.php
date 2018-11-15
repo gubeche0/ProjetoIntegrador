@@ -17,45 +17,24 @@
             <?php } ?>
 
             <form method="post">
-
-                    <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label">Matricula:</label>
-                        <div class="col-sm-10">
-        
-                            <input type="number" name="matricula" id="matricula" class="form-control" placeholder="Matricula" required <?php if( isset($aluno) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?> value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
-                        </div>
-                    </div>
-            
+                    
                     <div class="form-group row">
         
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required <?php if( isset($aluno) ){ ?>autofocus<?php } ?> value='<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required value='<?php if( isset($curso) ){ ?><?php echo htmlspecialchars( $curso["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' autofocus>
                         </div>
                     </div>
-        
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                        <div class="col-sm-10">
-                            <input type="email" name="email" id="email" placeholder="Email" class="form-control" required value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="curso" class="col-sm-2 col-form-label">Curso:</label>
-                        <div class="col-sm-10">
-                            <select class="custom-select" name="curso" id="curso">
-                                <?php $counter1=-1;  if( isset($cursos) && ( is_array($cursos) || $cursos instanceof Traversable ) && sizeof($cursos) ) foreach( $cursos as $key1 => $value1 ){ $counter1++; ?>
-
-                                    <option value="<?php echo htmlspecialchars( $value1['id'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($aluno) && $aluno['idcurso'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
-                                <?php } ?>
-
-                            </select>
-                        </div>
-                    </div>
-
                     
+                    <div class="form-group row">
+        
+                        <label for="nome" class="col-sm-2 col-form-label">Abreviacao:</label>
+                        <div class="col-sm-10">
+        
+                            <input type="text" name="abreviacao" id="abreviacao" class="form-control" placeholder="Abreviacao" required value='<?php if( isset($curso) ){ ?><?php echo htmlspecialchars( $curso["abreviacao"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                        </div>
+                    </div>
         
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">

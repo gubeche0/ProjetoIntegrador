@@ -48,19 +48,22 @@
                     </li>
 
                     <li class=<?php if( $page == 'emprestimos' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
-                        <a class="nav-link dropdown-toggle" href="#" id="livros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Empréstimos</a>
-                        <div class="dropdown-menu" aria-labelledby="livros">
+                        <a class="nav-link dropdown-toggle" href="#" id="emprestimos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Empréstimos</a>
+                        <div class="dropdown-menu" aria-labelledby="emprestimos">
                             <a class="dropdown-item" href="#"><i class="fas fa-list"></i> Listar</a>
                             <a class="dropdown-item" href="#"><i class="fas fa-plus"></i> Adicionar</a>
                         </div>
                     </li>
                     <li class="nav-item">
 
-                    <li class=<?php if( $page == 'categorias' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
-                        <a class="nav-link dropdown-toggle" href="#" id="livros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Categorias</a>
-                        <div class="dropdown-menu" aria-labelledby="livros">
-                            <a class="dropdown-item" href="/categorias"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="/categorias/create"><i class="fas fa-plus"></i> Adicionar</a>
+                    
+                    <li class=<?php if( $page == 'outros' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
+                        <a class="nav-link dropdown-toggle" href="#" id="outros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Outros</a>
+                        <div class="dropdown-menu" aria-labelledby="outros">
+                            <a class="dropdown-item" href="#">Configurações</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/categorias">Categorias</a>
+                            <a class="dropdown-item" href="/cursos">Cursos</a>
                         </div>
                     </li>
                     <li class="nav-item">

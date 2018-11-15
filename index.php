@@ -7,6 +7,8 @@
     use App\Controllers\AlunoController;
     use App\Page;
     use App\Controllers\CategoriaController;
+    use App\Controllers\CursoController;
+
     session_start();
 
     $app = new Slim();
@@ -117,6 +119,53 @@
         $categoria = new CategoriaController();
         $categoria->delete($id);
     });
+
+
+
+    // Cursos
+    // Categorias
+    $app->get("/cursos", function(){
+        UserController::verifyLogin();
+        $curso = new CursoController();
+        $curso->pageIndex();
+        
+    });
+
+    $app->get("/cursos/create", function(){
+        UserController::verifyLogin();        
+        $curso = new CursoController();
+        $curso->pageCreate();
+        
+    });
+
+    $app->post("/cursos/create", function(){
+        UserController::verifyLogin();
+        $curso = new CursoController();
+        $curso->create();
+    });
+
+
+    $app->get("/cursos/:id/edit", function($id){
+        UserController::verifyLogin();
+        $curso = new CursoController();
+        $curso->pageEdit($id);
+    });
+
+    $app->post("/cursos/:id/edit", function($id){
+        UserController::verifyLogin();
+        $curso = new CursoController();
+        $curso->update($id);
+        
+    });
+
+    $app->get("/cursos/:id/delete", function($id){
+        UserController::verifyLogin();
+        $curso = new CursoController();
+        $curso->delete($id);
+    });
+
+
+
 
 
     $app->get("/emprestimos", function(){

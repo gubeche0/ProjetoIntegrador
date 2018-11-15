@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 use App\Page;
-use App\Model\Categoria;
+use App\Model\Curso;
 
 
-class CategoriaController extends Controller{
+class CursoController extends Controller{
     private $id;
-    private $categoria;
+    private $curso;
     
     public function __construct(){
-        $this->categoria = new Categoria();
+        $this->curso = new Curso();
         
     }
     
@@ -19,8 +19,8 @@ class CategoriaController extends Controller{
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
         $this->getPage("outros");
 
-        $this->page->setTpl("categorias", array(
-            "categoria" => Categoria::listAll($query)
+        $this->page->setTpl("cursos", array(
+            "curso" => Curso::listAll($query)
         ));
     }
 
@@ -28,39 +28,40 @@ class CategoriaController extends Controller{
         $this->getPage("outros", array(
             "footer" => false
         ));
-        $this->page->setTpl("categorias-form");
+        $this->page->setTpl("cursos-form");
     }
 
     public function pageEdit($id){
-        $this->categoria->setId($id);
-        $this->categoria->loadById();
+        $this->curso->setId($id);
+        $this->curso->loadById();
 
         $this->getPage("outros", array(
             "footer" => false
         ));
         
-        $this->page->setTpl("categorias-form", array(
-            "categoria" => $this->categoria->listOne($id)
+        $this->page->setTpl("cursos-form", array(
+            "curso" => $this->curso->listOne($id)
         ));
         
     }
 
     private function loadModel(){
-        $this->categoria->setNome($_POST["nome"]);
+        $this->curso->setNome($_POST["nome"]);
+        $this->curso->setAbreviacao($_POST["abreviacao"]);
 
     }
 
     public function create(){
         try{
             $this->loadModel();
-            $this->categoria->create();
+            $this->curso->create();
         }catch(\Exception $e){
             Page::setErros($e->getMessage());
-            header("Location: /categorias/create");
+            header("Location: /cursos/create");
             exit;
         }finally{
-            Page::setSuccess("Categoria cadastrado com sucesso!");
-            header("Location: /categorias/create");
+            Page::setSuccess("Curso cadastrado com sucesso!");
+            header("Location: /cursos/create");
             exit;
         }
     }
@@ -68,24 +69,24 @@ class CategoriaController extends Controller{
     public function update($id){
         try{
             $this->loadModel();
-            $this->categoria->setId($id);
-            $this->categoria->update();
+            $this->curso->setId($id);
+            $this->curso->update();
             
         }catch(\Exception $e){
             Page::setErros($e->getMessage());
-            header("Location: /categorias");
+            header("Location: /cursos");
             exit;
         }finally{
-            Page::setSuccess("Categoria alterado com sucesso!");
-            header("Location: /categorias");
+            Page::setSuccess("Curso alterado com sucesso!");
+            header("Location: /cursos");
             exit;
         }
     }
 
     public function delete($id){
-        $this->categoria->setId($id);
-        $this->categoria->delete();
-        header("Location: /categorias");
+        $this->curso->setId($id);
+        $this->curso->delete();
+        header("Location: /cursos");
         exit;
     }
 
