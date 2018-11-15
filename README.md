@@ -7,7 +7,8 @@ Facilitando e agilizando os processos de distribuição e devolição dos livros
 1. __Php__
 2. __Javascript__
 3. __HTML__
-4. __CSS__ 
+
+Foi usado CSS para estilização das páginas
 
 ## Bibliotecas utilizadas
 1. __Slim framework__
