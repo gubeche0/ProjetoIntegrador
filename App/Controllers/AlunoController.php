@@ -33,13 +33,12 @@ class AlunoController extends Controller{
 
     public function pageEdit($id){
         $this->aluno->setMatricula($id);
-        $this->aluno->loadById();
 
         $this->getPage("alunos", array(
             "footer" => false
         ));
         $this->page->setTpl("alunos-form", array(
-            "aluno" => $this->aluno->getValues()
+            "aluno" => $this->aluno->listOne($id)
         ));
         
     }
@@ -67,15 +66,16 @@ class AlunoController extends Controller{
         }
     }
 
-    public function update(){
+    public function update($id){
         try{
             $this->loadModel();
+            $this->aluno->setMatricula($id);
             $this->aluno->update();
             
         }catch(\Exception $e){
-            var_dump($e);
-            exit;
             Page::setErros($e->getMessage());
+            header("Location: /alunos");
+            exit;
         }finally{
             Page::setSuccess("Aluno(a) alterado(a) com sucesso!");
             header("Location: /alunos");

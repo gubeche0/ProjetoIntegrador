@@ -17,44 +17,15 @@
             <?php } ?>
 
             <form method="post">
-
-                    <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label">Matricula:</label>
-                        <div class="col-sm-10">
-        
-                            <input type="number" name="matricula" id="matricula" class="form-control" placeholder="Matricula" required <?php if( isset($aluno) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?> value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
-                        </div>
-                    </div>
-            
+                    
                     <div class="form-group row">
         
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required <?php if( isset($aluno) ){ ?>autofocus<?php } ?> value='<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required value='<?php if( isset($categoria) ){ ?><?php echo htmlspecialchars( $categoria["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' autofocus>
                         </div>
-                    </div>
-        
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                        <div class="col-sm-10">
-                            <input type="email" name="email" id="email" placeholder="Email" class="form-control" required value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="curso" class="col-sm-2 col-form-label">Curso:</label>
-                        <div class="col-sm-10">
-                            <select class="custom-select" name="curso" id="curso">
-                                <option value="1" <?php if( isset($aluno) && $aluno['idcurso'] == 1 ){ ?>selected<?php } ?>>Técnico em informática para internet</option>
-                                <option value="2" <?php if( isset($aluno) && $aluno['idcurso'] == 2 ){ ?>selected<?php } ?>>Agropecuária</option>
-                                <option value=""></option>
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    
+                    </div>                
         
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">

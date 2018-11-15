@@ -18,6 +18,19 @@ class Aluno{
         ));
     }
 
+    public static function listOne($id){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $id
+        ));
+
+        if(count($result) > 0){
+            return $result[0];
+        }else{
+            return false;
+        }
+    }
+
     public function loadById(){
         $sql = new Database();
         $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(

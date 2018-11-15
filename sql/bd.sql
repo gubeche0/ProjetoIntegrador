@@ -106,3 +106,8 @@ insert into alunos(matricula, nome, turma, email, idcurso, idfuncionario) values
 
 
 -- SELECT * FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.nome LIKE "%%" ORDER BY alunos.nome ASC
+
+
+
+insert into categorias(nome, idfuncionario) values("Biologia", 1); 
+insert into categorias(nome, idfuncionario) values("Física", 1); 

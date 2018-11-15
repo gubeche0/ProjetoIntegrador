@@ -6,6 +6,7 @@
     use App\Controllers\UserController;
     use App\Controllers\AlunoController;
     use App\Page;
+    use App\Controllers\CategoriaController;
     session_start();
 
     $app = new Slim();
@@ -63,7 +64,7 @@
     $app->post("/alunos/:id/edit", function($id){
         UserController::verifyLogin();
         $aluno = new AlunoController();
-        $aluno->update();
+        $aluno->update($id);
         
     });
 
@@ -72,6 +73,51 @@
         $aluno = new AlunoController();
         $aluno->delete($id);
     });
+
+
+
+
+    // Categorias
+    $app->get("/categorias", function(){
+        UserController::verifyLogin();
+        $categoria = new  CategoriaController();
+        $categoria->pageIndex();
+        
+    });
+
+    $app->get("/categorias/create", function(){
+        UserController::verifyLogin();        
+        $categoria = new CategoriaController();
+        $categoria->pageCreate();
+        
+    });
+
+    $app->post("/categorias/create", function(){
+        UserController::verifyLogin();
+        $categoria = new CategoriaController();
+        $categoria->create();
+    });
+
+
+    $app->get("/categorias/:id/edit", function($id){
+        UserController::verifyLogin();
+        $categoria = new CategoriaController();
+        $categoria->pageEdit($id);
+    });
+
+    $app->post("/categorias/:id/edit", function($id){
+        UserController::verifyLogin();
+        $categoria = new CategoriaController();
+        $categoria->update($id);
+        
+    });
+
+    $app->get("/categorias/:id/delete", function($id){
+        UserController::verifyLogin();
+        $categoria = new CategoriaController();
+        $categoria->delete($id);
+    });
+
 
     $app->get("/emprestimos", function(){
         UserController::verifyLogin();
