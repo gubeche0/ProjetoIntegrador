@@ -1,7 +1,7 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?>    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title text-center my-3">Gestão de Alunos</h1>
+                <h1 class="panel-title text-center my-3">Gestão de Cursos</h1>
             </div>
             <div class="panel-body">
                 <?php $counter1=-1; $newvar1=App\Page::getErros(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
