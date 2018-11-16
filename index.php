@@ -8,6 +8,7 @@
     use App\Page;
     use App\Controllers\CategoriaController;
     use App\Controllers\CursoController;
+    use App\Controllers\LivroController;
 
     session_start();
 
@@ -36,6 +37,8 @@
         UserController::logout();
     });
 
+
+    // Alunos
     $app->get("/alunos", function(){
         UserController::verifyLogin();
         $aluno = new AlunoController();
@@ -123,7 +126,6 @@
 
 
     // Cursos
-    // Categorias
     $app->get("/cursos", function(){
         UserController::verifyLogin();
         $curso = new CursoController();
@@ -164,6 +166,47 @@
         $curso->delete($id);
     });
 
+
+    //Livros
+    $app->get("/livros", function(){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->pageIndex();
+        
+    });
+
+    $app->get("/livros/create", function(){
+        UserController::verifyLogin();        
+        $livro = new LivroController();
+        $livro->pageCreate();
+        
+    });
+
+    $app->post("/livros/create", function(){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->create();
+    });
+
+
+    $app->get("/livros/:id/edit", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->pageEdit($id);
+    });
+
+    $app->post("/livros/:id/edit", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->update($id);
+        
+    });
+
+    $app->get("/livros/:id/delete", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->delete($id);
+    });
 
 
 

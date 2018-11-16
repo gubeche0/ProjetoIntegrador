@@ -36,7 +36,7 @@
                     <a class="text-right" href="#">Opções Avançada</a>
                 </p>
                 <a href="/alunos/create">Novo Aluno</a>
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table table-striped table-bordered table-hover" id="table">
                     <thead class="thead-light">
                         <tr>
                             <th>Matricula</th>
@@ -55,7 +55,7 @@
                             <td><?php echo htmlspecialchars( $value1["curso"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td><?php echo htmlspecialchars( $value1["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td>
-                                <!-- <a class="text-dark" href='#'><i class="fas fa-info" aria-hidden="true"></i> Info</a> | -->
+                                
                                 <a class="text-dark" href='/alunos/<?php echo htmlspecialchars( $value1["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/edit'><i class="fas fa-edit" aria-hidden="true"></i> Editar</a> |
                                 <a class="text-dark" href="#" onclick="excluir(<?php echo htmlspecialchars( $value1['matricula'], ENT_COMPAT, 'UTF-8', FALSE ); ?>)"><i class="fas fa-trash" aria-hidden="true"></i> Excluir</a></td>
                             </tr>
@@ -67,6 +67,16 @@
             </div>
         </div>
     </div>
+
+        
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/res/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
     <script>
         function excluir(id){
             var resposta = confirm("Deseja deletar a criança???");
@@ -75,4 +85,8 @@
                 window.location.href = '/alunos/' + id + '/delete';
             }
         }
+        
     </script>
+</body>
+
+</html>

@@ -42,8 +42,8 @@
                     <li class=<?php if( $page == 'livros' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
                         <a class="nav-link dropdown-toggle" href="#" id="livros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Livros</a>
                         <div class="dropdown-menu" aria-labelledby="livros">
-                            <a class="dropdown-item" href="#"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="/livros"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="/livros/create"><i class="fas fa-plus"></i> Adicionar</a>
                         </div>
                     </li>
 

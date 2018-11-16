@@ -18,7 +18,9 @@ class AlunoController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
-        $this->getPage("alunos");
+        $this->getPage("alunos", array(
+            "footer" => false
+        ));
 
         $this->page->setTpl("alunos", array(
             "alunos" => Aluno::listAll($query)
