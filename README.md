@@ -25,6 +25,6 @@ Também utilizamos o Visual Studio Code, Sublime, Git(junto com o Bitbucket), Tr
 Mysql Workbench, brModelo e o Astah, para nos organizar e programar com as linguagens e bibliotecas a cima.
 
 ###Componentes do grupo:
-__Gustavo Beche Lopes__
-__Pedro Lucas Viel Cristofoli__
-__Sednei Rossetti Junior__
+* __Gustavo Beche Lopes__
+* __Pedro Lucas Viel Cristofoli__
+* __Sednei Rossetti Junior__
