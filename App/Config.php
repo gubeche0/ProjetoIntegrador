@@ -4,7 +4,7 @@
 
     final class Config{
         const HOST_NAME = "localhost";
-        const DATABASE_NAME = "gestaoLivrosIFRS";
+        const DATABASE_NAME = "gestaolivrosifrs";
         const DATABASE_USER_NAME = "root";
         const DATABASE_PASSWORD= "";
 

@@ -36,7 +36,6 @@ class User{
             throw new \Exception("Usuário inexistente ou senha inválida", 1);
         }
         $dados = $result[0];
-        
         if(password_verify($senha , $dados["senha"]) == true){
             $user = new User();
             $user->setId($dados["id"]);
@@ -56,7 +55,12 @@ class User{
         $_SESSION[User::SESSION] = null;
     }
 
-    
+    public static function getIdBySession(){
+        return $_SESSION[User::SESSION]["id"];
+    }
+
+
+
 
     public function getId(){
 

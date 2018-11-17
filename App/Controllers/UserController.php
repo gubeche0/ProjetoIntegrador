@@ -6,30 +6,26 @@ use App\Page;
 use App\Model\User;
 
 
-class UserController{
+class UserController extends Controller{
 
-    public static function index(){
-        $page = new Page(array(
+    public function pageIndex(){
+        $this->getPage("login", array(
             "header" => false,
             "footer" => false
         ));
-        $page->setTpl("login");
+        $this->page->setTpl("login");
     }
 
-    public static function login($email, $senha){
+    public function login($email, $senha){
         try{
             User::login($email, $senha);
             header("Location: /");
             exit;
         }catch(\Exception $e){
-         
-            $page = new Page(array(
-                "header" => false,
-                "footer" => false
-            ));
-            $page->setTpl("login", array(
-                "erros" => array($e->getMessage())
-            ));
+            Page::setErros($e->getMessage());
+            header("Location: /login");
+            exit;
+            
 
         }
     }
@@ -39,5 +35,11 @@ class UserController{
         header("Location: /login");
         exit;
     }
+
+    public static function verifyLogin(){
+        User::verifyLogin();
+    }
+
+    
 
 }

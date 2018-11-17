@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark mb-4" style="background-color: green;">
         <div class="container">
-            <img src="if.png" style="height:30px; width: 30px; margin-right:10px;  ">
+            <img src="if.png    " style="height:30px; width: 30px; margin-right:10px;  ">
             <a class="navbar-brand" href="#">IFRS</a>
 
             <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
@@ -30,35 +30,29 @@
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Alunos</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fas fa-user"></i> Alunos</a>
                         <div class="dropdown-menu" aria-labelledby="Criancas">
-                            <a class="dropdown-item" href="listaluno.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cadaluno.php"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="listarcriancas.php"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="cadcrianca.php"><i class="fas fa-plus"></i> Adicionar</a>
                         </div>
                     </li>
 
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Livros</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fas fa-user"></i> Livros</a>
                         <div class="dropdown-menu" aria-labelledby="Criancas">
-                            <a class="dropdown-item" href="listlivro.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cadlivro.php"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="listarcriancas.php"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="cadcrianca.php"><i class="fas fa-plus"></i> Adicionar</a>
                         </div>
                     </li>
 
                     <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Empréstimos</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="fas fa-user"></i> Empréstimos</a>
                         <div class="dropdown-menu" aria-labelledby="Criancas">
-                            <a class="dropdown-item" href="listemprestimo.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cademprestimo.php"><i class="fas fa-plus"></i> Adicionar</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="Criancas" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Categorias</a>
-                        <div class="dropdown-menu" aria-labelledby="Criancas">
-                            <a class="dropdown-item" href="listcategoria.php"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="cadcategoria.php"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="listarcriancas.php"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="cadcrianca.php"><i class="fas fa-plus"></i> Adicionar</a>
                         </div>
                     </li>
                     <li class="nav-item">

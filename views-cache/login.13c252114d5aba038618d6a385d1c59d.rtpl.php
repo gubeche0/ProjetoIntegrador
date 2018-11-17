@@ -1,10 +1,10 @@
-<?php if(!class_exists('Rain\Tpl')){exit;}?>
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <title>Vaccinare</title>
+    <title>Gestão Livros IFRS</title>
+    <link rel="shortcut icon" href="/res/ifrs.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -14,19 +14,30 @@
 
 </head>
 
-<body class="">
+<body>
 
     <div id="erros">
-        <?php $counter1=-1;  if( isset($erros) && ( is_array($erros) || $erros instanceof Traversable ) && sizeof($erros) ) foreach( $erros as $key1 => $value1 ){ $counter1++; ?>
+        <?php $counter1=-1; $newvar1=App\Page::getErros(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+
             <div class="alert alert-danger" role="alert">
                 <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
             </div>
         <?php } ?>
+
+        <?php $counter1=-1; $newvar1=App\Page::getSuccess(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+
+            <div class="alert alert-success" role="alert">
+                <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
+            </div>
+        <?php } ?>
+
     </div>
     
     <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post" action="/login">
         <div class="text-center">
-            <img class="mb-4" src="/res/login.png" alt="" width="100" />
+            <img class="mb-4" src="/res/if-logo.png" alt="Logo do IFRS" width="100" />
 
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <label for="email" class="sr-only">Endereço de email</label>

@@ -18,7 +18,7 @@
     
     <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post">
         <div class="text-center">
-            <img class="mb-4" src="/res/if.png" alt="" width="100" />
+            <img class="mb-4" src="login.png" alt="" width="100" />
 
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <label for="email" class="sr-only">Endereço de email</label>
