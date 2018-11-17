@@ -3,7 +3,7 @@ __Matérias do curso técnico envolvidas no projeto:__Programação web II, Dese
 
 Queremos agradecer a todos os professores que nos ajudaram a concluir nosso projeto do começo ao fim.
 ## Site para gestão de livros ifrs 
-Nosso site tem como objeto ajudar na hora de organizar, os livros e emprétimos do ensino médio do IFRS campus Bento Gonçalves.
+Nosso site tem como objetivo ajudar na hora de organizar, os livros e emprétimos do ensino médio do IFRS campus Bento Gonçalves.
 
 Facilitando e agilizando os processos de distribuição e devolução dos livros, auxiliando os funcionários a gerenciar os livros sem muita deficultade.
 
@@ -12,7 +12,6 @@ Facilitando e agilizando os processos de distribuição e devolução dos livros
 2. __Javascript__
 3. __HTML__
 
-Foi usado CSS para estilização das páginas.
 
 ## Bibliotecas utilizadas
 1. __Slim framework__
