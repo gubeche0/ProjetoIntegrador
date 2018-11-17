@@ -2,7 +2,7 @@
 
 namespace App\Model;
 use App\Model\Database;
-use App\Controllers\UserController;
+
 
 class Aluno{
 
@@ -11,11 +11,25 @@ class Aluno{
     private $email;
     private $curso;
 
-    public static function listAll($query = ""){
+    public static function listAll($query = "", $ativo = true){
         $sql = new Database();
-        return $sql->select("SELECT alunos.nome, cursos.abreviacao as curso, alunos.matricula, alunos.email FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.nome LIKE :QUERY ORDER BY alunos.matricula ASC", array(
-            ":QUERY" => ("%" . $query . "%")
+        return $sql->select("SELECT alunos.nome, cursos.abreviacao as curso, alunos.matricula, alunos.email FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.ativo = :ATIVO AND alunos.nome LIKE :QUERY ORDER BY alunos.matricula ASC", array(
+            ":QUERY" => ("%" . $query . "%"),
+            ":ATIVO" => $ativo
         ));
+    }
+
+    public static function listOne($id){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
+            ":MATRICULA" => $id
+        ));
+
+        if(count($result) > 0){
+            return $result[0];
+        }else{
+            return false;
+        }
     }
 
     public function loadById(){
@@ -44,14 +58,14 @@ class Aluno{
             throw new \Exception("Aluno(a) já cadastrado(a)!", 1);
         }
 
-        $a = $sql->query("INSERT INTO alunos(matricula, nome, email, idcurso, idfuncionario) VALUES (:MATRICULA , :NOME , :EMAIL , :IDCURSO , :IDFUNCIONARIO)", array(
+        return $sql->query("INSERT INTO alunos(matricula, nome, email, idcurso, idfuncionario) VALUES (:MATRICULA , :NOME , :EMAIL , :IDCURSO , :IDFUNCIONARIO)", array(
             ":MATRICULA" => $this->getMatricula(),
             ":NOME" => $this->getNome(),
             ":EMAIL" => $this->getEmail(),
             ":IDCURSO" => $this->getCurso(),
             ":IDFUNCIONARIO" => User::getIdBySession()
         ));
-        
+
         
         
     }
@@ -85,7 +99,7 @@ class Aluno{
         if(count($result) != 1){
             throw new \Exception("Aluno não cadastrado!");
         }
-        $sql->query("DELETE FROM alunos where matricula = :MATRICULA", array(
+        $sql->query("UPDATE alunos set ativo=0 WHERE matricula = :MATRICULA", array(
             ":MATRICULA" => $this->getMatricula()
         ));
     }

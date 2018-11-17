@@ -11,43 +11,24 @@
                 </div>
             {/loop}
             <form method="post" id="form">
-
-                    <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label">Matricula:</label>
-                        <div class="col-sm-10">
-        
-                            <input type="number" name="matricula" id="matricula" class="form-control" placeholder="Matricula" required {if="isset($aluno)"}readonly{else}autofocus{/if} value={if="isset($aluno)"}{$aluno["matricula"]}{else}""{/if}>
-                        </div>
-                    </div>
-            
+                    
                     <div class="form-group row">
         
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required {if="isset($aluno)"}autofocus{/if} value='{if="isset($aluno)"}{$aluno["nome"]}{/if}'>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required value='{if="isset($curso)"}{$curso["nome"]}{/if}' autofocus>
                         </div>
                     </div>
-        
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
-                        <div class="col-sm-10">
-                            <input type="email" name="email" id="email" placeholder="Email" class="form-control" required value={if="isset($aluno)"}{$aluno["email"]}{else}""{/if}>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="curso" class="col-sm-2 col-form-label">Curso:</label>
-                        <div class="col-sm-10">
-                            <select class="custom-select" name="curso" id="curso">
-                                {loop="$cursos"}
-                                    <option value="{$value['id']}" {if="isset($aluno) && $aluno['idcurso'] == $value['id']"}selected{/if}>{$value["nome"]}</option>
-                                {/loop}
-                            </select>
-                        </div>
-                    </div>
-
                     
+                    <div class="form-group row">
+        
+                        <label for="nome" class="col-sm-2 col-form-label">Abreviacao:</label>
+                        <div class="col-sm-10">
+        
+                            <input type="text" name="abreviacao" id="abreviacao" class="form-control" placeholder="Abreviacao" required value='{if="isset($curso)"}{$curso["abreviacao"]}{/if}'>
+                        </div>
+                    </div>
         
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">
@@ -70,12 +51,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
 
-
     <script type="text/javascript" src="/res/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
     <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
     <script type="text/javascript" src="/res/js/validacao.js"></script>
-
 </body>
 
 </html>

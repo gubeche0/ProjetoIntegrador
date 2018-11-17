@@ -16,46 +16,68 @@
                 </div>
             <?php } ?>
 
-            <form method="post" id="form">
-
+            <form method="post" enctype="multipart/form-data" id="form">
+                    
                     <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label">Matricula:</label>
+        
+                        <label for="nome" class="col-sm-2 col-form-label">ISBN:</label>
                         <div class="col-sm-10">
         
-                            <input type="number" name="matricula" id="matricula" class="form-control" placeholder="Matricula" required <?php if( isset($aluno) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?> value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
+                            <input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["isbn"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' <?php if( isset($livro) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?>>
                         </div>
-                    </div>
-            
+                    </div> 
+                    
                     <div class="form-group row">
         
                         <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required <?php if( isset($aluno) ){ ?>autofocus<?php } ?> value='<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' <?php if( !isset($livro) ){ ?>autofocus<?php } ?>>
                         </div>
-                    </div>
+                    </div> 
+
+                    <div class="form-group row">
         
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                        <label for="nome" class="col-sm-2 col-form-label">Volume:</label>
                         <div class="col-sm-10">
-                            <input type="email" name="email" id="email" placeholder="Email" class="form-control" required value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>
+        
+                            <input type="text" name="volume" id="volume" class="form-control" placeholder="Volume" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                        </div>
+                    </div> 
+
+                    <div class="form-group row">
+        
+                        <label for="nome" class="col-sm-2 col-form-label">Autor:</label>
+                        <div class="col-sm-10">
+        
+                            <input type="text" name="autor" id="autor" class="form-control" placeholder="autor" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="curso" class="col-sm-2 col-form-label">Curso:</label>
+                        <label for="categoria" class="col-sm-2 col-form-label">Categoria:</label>
                         <div class="col-sm-10">
-                            <select class="custom-select" name="curso" id="curso">
-                                <?php $counter1=-1;  if( isset($cursos) && ( is_array($cursos) || $cursos instanceof Traversable ) && sizeof($cursos) ) foreach( $cursos as $key1 => $value1 ){ $counter1++; ?>
+                            <select class="custom-select" name="categoria" id="categoria">
+                                <?php $counter1=-1;  if( isset($categorias) && ( is_array($categorias) || $categorias instanceof Traversable ) && sizeof($categorias) ) foreach( $categorias as $key1 => $value1 ){ $counter1++; ?>
 
-                                    <option value="<?php echo htmlspecialchars( $value1['id'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($aluno) && $aluno['idcurso'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                    <option value="<?php echo htmlspecialchars( $value1['id'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($livro) && $livro['categoria'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                                 <?php } ?>
 
                             </select>
                         </div>
                     </div>
 
-                    
+                    <div class="form-group row">
+        
+                        <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
+                        <div class="col-sm-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="foto" name="foto">
+                                <label class="custom-file-label" for="foto">Escolher arquivo</label>
+                              </div>
+                            
+                        </div>
+                    </div>
         
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">
@@ -78,12 +100,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
 
-
     <script type="text/javascript" src="/res/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
     <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
     <script type="text/javascript" src="/res/js/validacao.js"></script>
-
 </body>
 
 </html>

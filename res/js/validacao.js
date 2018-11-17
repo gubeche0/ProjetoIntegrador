@@ -7,14 +7,27 @@ $(document).ready(function (){
             matricula:{
                 required:true
             },
-            nome:{
-                required: true
-                
-            },
             email:{
                 required: true,
                 email: true
             },
+            isbm:{
+                required:true
+            },
+            nome:{
+                required: true
+                
+            },
+            volume:{
+                required: true,
+            },
+            autor:{
+                required: true,
+            },
+            abreviacao:{
+                required: true,
+            },
         },
     })
 });
+

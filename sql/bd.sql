@@ -8,6 +8,7 @@ CREATE TABLE funcionarios(
     senha varchar(256) not null,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     
+    ativo bool not null default 1,
     primary key(id)
 );
 
@@ -34,6 +35,7 @@ CREATE TABLE alunos(
     email VARCHAR(80),
     idcurso int not null,
     
+    ativo bool not null default 1,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
     PRIMARY KEY(matricula),
@@ -59,10 +61,16 @@ CREATE TABLE livros(
     autor varchar(80),
     categoria int,
     urlfoto varchar(256),
+    
+    ativo bool not null default 1,
     dataregistro timestamp not null default current_timestamp,
+    idfuncionario int not null,
     primary key(isbn),
-    foreign key(categoria) references categorias(id)
+    foreign key(categoria) references categorias(id),
+    foreign key(idfuncionario) references funcionarios(id)
 );
+
+
 
 CREATE TABLE exemplares(
 	id int not null auto_increment,
@@ -71,6 +79,7 @@ CREATE TABLE exemplares(
     idfuncionario int not null,
     `status` varchar(25) not null default 'Utilizavel', 
     
+    ativo bool not null default 1,
     primary key(id),
     foreign key(livro) references livros(isbn),
 	foreign key(idfuncionario) references funcionarios(id)
@@ -85,6 +94,7 @@ CREATE TABLE emprestimos(
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
 
+	ativo bool not null default 1,
 	primary key(id),
     foreign key(id_exemplar) references exemplares(id),
     foreign key(matricula_aluno) references alunos(matricula),
@@ -105,4 +115,15 @@ insert into cursos(nome, abreviacao) values ("Viticultura e Enologia", "ENO");
 insert into alunos(matricula, nome, turma, email, idcurso, idfuncionario) values('201710066666', 'Gustavo Beche Lopes', '2 info', 'gubeche0@gmail.com', '1', '1'); 
 
 
--- SELECT * FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.nome LIKE "%%" ORDER BY alunos.nome ASC
+SELECT * FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso WHERE alunos.nome LIKE "%%" ORDER BY alunos.nome ASC;
+
+
+
+insert into categorias(nome, idfuncionario) values("Biologia", 1); 
+insert into categorias(nome, idfuncionario) values("Física", 1);
+insert into categorias(nome, idfuncionario) values("Geografia", 1);
+
+insert into livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) values ('978-85-96-00358-2', 'Geografia em rede', 'Volume 2', 'Edilson Adão', '3', 'url_foto', '1');
+INSERT INTO livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) VALUES ( '2323', '234234', '423', '23423', '1', '4324', '1');
+select * from livros;
+SELECT livros.nome, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.nome LIKE "%%" ORDER BY isbn ASC; 

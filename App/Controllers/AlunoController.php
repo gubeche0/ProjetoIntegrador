@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Page;
 use App\Model\Aluno;
+use App\Model\Curso;
 
 
 class AlunoController extends Controller{
@@ -17,7 +18,9 @@ class AlunoController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
-        $this->getPage("alunos");
+        $this->getPage("alunos", array(
+            "footer" => false
+        ));
 
         $this->page->setTpl("alunos", array(
             "alunos" => Aluno::listAll($query)
@@ -28,18 +31,20 @@ class AlunoController extends Controller{
         $this->getPage("alunos", array(
             "footer" => false
         ));
-        $this->page->setTpl("alunos-form");
+        $this->page->setTpl("alunos-form", array(
+            "cursos" => Curso::listAll()
+        ));
     }
 
     public function pageEdit($id){
         $this->aluno->setMatricula($id);
-        $this->aluno->loadById();
 
         $this->getPage("alunos", array(
             "footer" => false
         ));
         $this->page->setTpl("alunos-form", array(
-            "aluno" => $this->aluno->getValues()
+            "aluno" => $this->aluno->listOne($id),
+            "cursos" => Curso::listAll()
         ));
         
     }
@@ -67,15 +72,16 @@ class AlunoController extends Controller{
         }
     }
 
-    public function update(){
+    public function update($id){
         try{
             $this->loadModel();
+            $this->aluno->setMatricula($id);
             $this->aluno->update();
             
         }catch(\Exception $e){
-            var_dump($e);
-            exit;
             Page::setErros($e->getMessage());
+            header("Location: /alunos");
+            exit;
         }finally{
             Page::setSuccess("Aluno(a) alterado(a) com sucesso!");
             header("Location: /alunos");
