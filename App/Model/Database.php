@@ -55,6 +55,10 @@
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     
         }
+
+        public function LAST_INSERT_ID(){
+            return $this->conn->lastInsertId();
+        }
     
     }
 

@@ -16,25 +16,35 @@
                 </div>
             <?php } ?>
 
-            <form method="post" id="form">
+            <form method="post">
                     
                     <div class="form-group row">
+                        <label for="livro" class="col-sm-2 col-form-label">Livro:</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" name="livro" id="livro">
+                                <?php $counter1=-1;  if( isset($livros) && ( is_array($livros) || $livros instanceof Traversable ) && sizeof($livros) ) foreach( $livros as $key1 => $value1 ){ $counter1++; ?>
+
+                                    <option value="<?php echo htmlspecialchars( $value1['isbn'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($exemplar) && $exemplar['livro'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                <?php } ?>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
         
-                        <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                        <label for="nome" class="col-sm-2 col-form-label">Quantidade:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required value='<?php if( isset($categoria) ){ ?><?php echo htmlspecialchars( $categoria["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' autofocus>
+                            <input type="number" min="0" name="quantidade" id="quantidade" class="form-control" placeholder="Quantidade" required value="">
                         </div>
-                    </div>                
+                    </div>
         
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">
                         <input name="cancelar" id="cancelar" class="btn btn-danger col ml-1" type="reset" value="Cancelar">
                     </div>
 
-                    
-        
-        
                 </form>
        
     </div>
@@ -47,11 +57,6 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="/res/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
-    <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
-    <script type="text/javascript" src="/res/js/validacao.js"></script>
 </body>
 
 </html>

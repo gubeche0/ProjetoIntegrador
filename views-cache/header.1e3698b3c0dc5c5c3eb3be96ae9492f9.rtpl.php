@@ -47,6 +47,14 @@
                         </div>
                     </li>
 
+                    <li class=<?php if( $page == 'exemplares' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
+                        <a class="nav-link dropdown-toggle" href="#" id="livros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Exemplares</a>
+                        <div class="dropdown-menu" aria-labelledby="livros">
+                            <a class="dropdown-item" href="/exemplares"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="/exemplares/create"><i class="fas fa-plus"></i> Adicionar</a>
+                        </div>
+                    </li>
+
                     <li class=<?php if( $page == 'emprestimos' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
                         <a class="nav-link dropdown-toggle" href="#" id="emprestimos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Empréstimos</a>
                         <div class="dropdown-menu" aria-labelledby="emprestimos">

@@ -9,6 +9,7 @@
     use App\Controllers\CategoriaController;
     use App\Controllers\CursoController;
     use App\Controllers\LivroController;
+    use App\Controllers\ExemplarController;
 
     session_start();
 
@@ -209,6 +210,47 @@
     });
 
 
+    // exemplares
+    $app->get("/exemplares", function(){
+        UserController::verifyLogin();
+        $exemplar = new ExemplarController();
+        $exemplar->pageIndex();
+        
+    });
+
+    $app->get("/exemplares/create", function(){
+        UserController::verifyLogin();        
+        $exemplar = new ExemplarController();
+        $exemplar->pageCreate();
+        
+    });
+
+    $app->post("/exemplares/create", function(){
+        UserController::verifyLogin();
+        $exemplar = new ExemplarController();
+        $exemplar->create();
+    });
+
+
+    $app->get("/livros/:id/edit", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->pageEdit($id);
+    });
+
+    $app->post("/livros/:id/edit", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->update($id);
+        
+    });
+
+    $app->get("/livros/:id/delete", function($id){
+        UserController::verifyLogin();
+        $livro = new LivroController();
+        $livro->delete($id);
+    });
+
 
 
     $app->get("/emprestimos", function(){
@@ -231,4 +273,8 @@
         UserController::verifyLogin();
     });
     
+    $app->get("/last", function(){
+        $sql = new App\Model\Database();
+    });
+
     $app->run();

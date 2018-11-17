@@ -6,7 +6,7 @@
         const HOST_NAME = "localhost";
         const DATABASE_NAME = "gestaoLivrosIFRS";
         const DATABASE_USER_NAME = "root";
-        const DATABASE_PASSWORD= "";
+        const DATABASE_PASSWORD= "algumasenhaboa";
 
         const DIR_FOTOS = "res/img/livros_capas";
 
