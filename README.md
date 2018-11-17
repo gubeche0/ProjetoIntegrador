@@ -2,6 +2,7 @@
 __Matérias do curso técnico envolvidas no projeto: __Programação Web II, Desenvolvimento de Sistemas Web, Programação de Scripts, Análise e Projeto de Sistemas Web e Banco de Dados.
 
 Queremos agradecer a todos os professores que nos ajudaram a concluir nosso projeto do começo ao fim.
+
 ## Sistema para gestão de livros do IFRS-BG
 Nosso sistema tem como objetivo ajudar na hora de organizar os livros e os empréstimos para o ensino médio do Instituto Federal do Rio Grande do Sul, Campus Bento Gonçalves.
 
@@ -12,7 +13,6 @@ Assim, facilitando e agilizando os processos de distribuição e devolução dos
 2. __JavaScript__
 3. __HTML__
 
-Foi usado CSS para estilização das páginas.
 
 ## Bibliotecas utilizadas
 1. __Slim framework__
