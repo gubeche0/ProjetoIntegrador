@@ -55,7 +55,7 @@ CREATE TABLE categorias(
 );
 
 CREATE TABLE livros(
-    isbn varchar(14) not null,
+    isbn varchar(20) not null,
     nome varchar(60) not null,
     volume varchar(30),
     autor varchar(80),
@@ -74,7 +74,7 @@ CREATE TABLE livros(
 
 CREATE TABLE exemplares(
 	id int not null auto_increment,
-    livro varchar(14) not null,
+    livro varchar(20) not null,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
     `status` varchar(25) not null default 'Utilizavel', 
@@ -124,6 +124,12 @@ insert into categorias(nome, idfuncionario) values("Física", 1);
 insert into categorias(nome, idfuncionario) values("Geografia", 1);
 
 insert into livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) values ('978-85-96-00358-2', 'Geografia em rede', 'Volume 2', 'Edilson Adão', '3', 'url_foto', '1');
-INSERT INTO livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) VALUES ( '2323', '234234', '423', '23423', '1', '4324', '1');
+INSERT INTO livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) VALUES ( '2323', 'nome do livro', 'Volume 1', 'autor', '1', 'foto', '1');
 select * from livros;
 SELECT livros.nome, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.nome LIKE "%%" ORDER BY isbn ASC; 
+
+
+insert into exemplares(livro, idfuncionario) values ('978-85-96-00358-2', 1);
+
+
+

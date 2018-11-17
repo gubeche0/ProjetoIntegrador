@@ -18,7 +18,7 @@ class LivroController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
-        $this->getPage("outros");
+        $this->getPage("livros");
 
         $this->page->setTpl("livros", array(
             "livros" => Livro::listAll($query)
