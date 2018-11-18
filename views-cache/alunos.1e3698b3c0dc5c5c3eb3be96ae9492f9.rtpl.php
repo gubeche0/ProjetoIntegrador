@@ -20,16 +20,16 @@
                     </div>
                 <?php } ?>
 
-                <form action="" method="get">
+                
 
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="query" name="query" placeholder="Pesquisar Alunos">
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+                            <button type="button" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
                         </div>
                     </div>
 
-                </form>
+                
                         
                       
                 <p class="float-right">
@@ -69,8 +69,6 @@
     </div>
 
         
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/res/js/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -78,6 +76,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
     <script>
+        $("#query").quicksearch('table tbody tr')
         function excluir(id){
             var resposta = confirm("Deseja deletar a criança???");
             

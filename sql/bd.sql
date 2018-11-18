@@ -26,6 +26,7 @@ CREATE TABLE cursos(
 	id int not null auto_increment,
     nome varchar(50),
     abreviacao varchar(10),
+    ativo bool not null default 1,
     primary key(id)
 );
 
@@ -143,23 +144,6 @@ insert into emprestimos(id_exemplar, matricula_aluno, periodo_entrega, idfuncion
 UPDATE emprestimos set ativo = 0 WHERE id = 2;
 select * from livros;
 
-SELECT livros.*, categorias.nome as categoriaNome, count(exemplares.id) as estoque 
-	FROM livros LEFT JOIN exemplares ON exemplares.livro = livros.isbn 
-    INNER JOIN categorias ON livros.categoria = categorias.id 
-    WHERE 
-    livros.ativo = 1 AND livros.nome LIKE "%%" 
-    GROUP BY exemplares.livro ORDER BY isbn ASC;
+  
+  
     
-select count(*) from exemplares GROUP BY livro;
-SELECT livros.*, categorias.nome as categoriaNome, exemplar.estoque
-	FROM livros LEFT JOIN (SELECT COUNT(*) AS estoque, livro FROM exemplares WHERE ativo = 1 GROUP BY livro) exemplar ON livros.isbn = exemplar.livro
-    INNER JOIN categorias ON livros.categoria = categorias.id 
-    WHERE livros.ativo = 1 AND livros.nome LIKE "%%" 
-    ORDER BY isbn ASC;
-    
-SELECT livros.*, categorias.nome as categoriaNome
-	FROM livros  
-    INNER JOIN categorias ON livros.categoria = categorias.id 
-    WHERE 
-    livros.ativo = 1 AND livros.nome LIKE "%%" 
-	ORDER BY isbn ASC;

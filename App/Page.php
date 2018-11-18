@@ -12,7 +12,7 @@ class Page{
     private $options = [];
     private $defaults = [
         "header" => true,
-        "footer" => true,
+        "footer" => false,
         "data" =>[],
         "page" => "/"
     ];

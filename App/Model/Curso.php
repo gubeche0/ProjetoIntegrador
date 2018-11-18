@@ -13,7 +13,7 @@ class Curso{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT id, nome, abreviacao FROM cursos WHERE nome LIKE :QUERY ORDER BY id ASC", array(
+        return $sql->select("SELECT id, nome, abreviacao FROM cursos WHERE ativo = 1 AND nome LIKE :QUERY ORDER BY id ASC", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         
@@ -90,7 +90,7 @@ class Curso{
         if(count($result) != 1){
             throw new \Exception("Curso não cadastrado!");
         }
-        $sql->query("DELETE FROM cursos where id = :ID", array(
+        $a = $sql->query("UPDATE cursos set ativo = 0  WHERE id = :ID", array(
             ":ID" => $this->getId()
         ));
     }

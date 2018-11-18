@@ -51,8 +51,8 @@
                     <li class=<?php if( $page == 'outros' ){ ?>"nav-item dropdown active" <?php }else{ ?>'nav-item dropdown' <?php } ?>>
                         <a class="nav-link dropdown-toggle" href="#" id="outros" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Outros</a>
                         <div class="dropdown-menu" aria-labelledby="outros">
-                            <a class="dropdown-item" href="#">Configurações</a>
-                            <div class="dropdown-divider"></div>
+                            <!-- <a class="dropdown-item" href="#">Configurações</a>
+                            <div class="dropdown-divider"></div> -->
                             <a class="dropdown-item" href="/categorias">Categorias</a>
                             <a class="dropdown-item" href="/cursos">Cursos</a>
                         </div>

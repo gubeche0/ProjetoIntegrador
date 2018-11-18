@@ -42,7 +42,7 @@ class LivroController extends Controller{
             "footer" => false
         ));
         
-        $this->page->setTpl("livros-form", array(
+        $this->page->setTpl("livros-edit", array(
             "livro" => $this->livro->listOne($id),
             "categorias" => Categoria::listAll()
         ));
