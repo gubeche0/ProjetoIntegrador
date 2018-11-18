@@ -28,16 +28,16 @@
         <div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
           <div class="text-center">
             <div class="hi-icon-wrap hi-icon-effect">
-              <i class="glyphicon glyphicon-list"></i>
-              <h2>Listagem dos exmplares</h2>
-              <p>Aqui você vai para página de listagem dos exemplares</p>
+              <a href="/livros"><i class="glyphicon glyphicon-list"></i></a>
+              <h2>Listagem dos livros</h2>
+              <p>Aqui você vai para página de listagem dos livros</p>
             </div>
           </div>
         </div>
         <div class="col-md-3 wow fadeInRight" data-wow-offset="0" data-wow-delay="0.3s">
           <div class="text-center">
             <div class="hi-icon-wrap hi-icon-effect">
-              <i class="glyphicon glyphicon-book"></i>
+              <a href="/emprestimos"><i class="glyphicon glyphicon-book"></i></a>
               <h2>Listagem dos empréstimos</h2>
               <p>Aqui você vai para a página de listagem de empréstimos</p>
             </div>
@@ -46,7 +46,7 @@
         <div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
           <div class="text-center">
             <div class="hi-icon-wrap hi-icon-effect">
-              <i class="glyphicon glyphicon-tags"></i>
+              <a href="/emprestimos/create"><i class="glyphicon glyphicon-tags"></i></a>
               <h2>Cadastro de Empréstimos</h2>
               <p>Aqui você vai para a página de cadastro de empréstimos</p>
             </div>
@@ -55,9 +55,9 @@
         <div class="col-md-3 wow fadeInLeft" data-wow-offset="0" data-wow-delay="0.3s">
           <div class="text-center">
             <div class="hi-icon-wrap hi-icon-effect">
-              <i class="glyphicon glyphicon-user"></i>
+              <a href="/alunos"><i class="glyphicon glyphicon-user"></i></a>
               <h2>Listagem de alunos</h2>
-              <p>Aqui você vai para página de listagem dos exemplares</p>
+              <p>Aqui você vai para página de listagem dos alunos</p>
             </div>
           </div>
         </div>
