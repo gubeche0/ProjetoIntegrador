@@ -28,3 +28,34 @@ Mysql Workbench, brModelo e o Astah, para nos organizar e programar com as lingu
 * __Gustavo Beche Lopes__
 * __Pedro Lucas Viel Cristofoli__
 * __Sednei Rossetti Junior__
+
+##Tutorial de como rodar o servidor:
+
+###requisitos para rodar
+    * composer      
+
+##SQL
+
+Primeiramente, é precio configurar o arquivo config.php dentro da pasta App.
+É necessário executar o código SQL dentro da pasta sql.
+Também é necessário inserir ousúario com o comando:
+	insert into funcionarios(email, nome, senha) value( EMAIL , NOME , HASH DA SENHA );
+O hash da senha deve ser obtido através da função `password_hash` no php.
+
+
+Primeiro de tudo clone o projeto com o seguinte comando:
+    Git clone https://gubeche0@bitbucket.org/gubeche0/projetointegrador.git
+
+Agora é preciso entrar no diretório criado e  baixar as dependências do projeto utilizando o ‘composer’
+     Cd pasta
+     Composer update 
+
+Agora pra executar existe 3 formas diferente, utilizando o servidor embutido do php, criando uma virtualhost para o projeto ou colocando na raiz do servidor
+
+### Servidor embutido do php
+Dentro da pasta do projeto execute o seguinte comando:
+     php -S localhost:8000
+
+### Virtualhost 
+Recomenda-se criar uma virtual host e deixar os arquivos do projeto dentro dela, para mais informações clique aqui(https://blog.mxcursos.com/virtual-host/)
+

@@ -98,10 +98,23 @@ CREATE TABLE emprestimos(
 	foreign key(idfuncionario) references funcionarios(id)
 );
 
+
+
+insert into funcionarios(email, nome, senha) value("admin@admin.com", "Admin", '$2y$12$bzsgJDMISFB.dzHSuYz9Mu0OpX.tvxKWIxQZPC2QY4ndOkvApjiRa');
+
 insert into cursos(nome, abreviacao) values ("Técnico em informática para internet", "INFO");
 insert into cursos(nome, abreviacao) values ("Agropecuária", "AGRO");
 insert into cursos(nome, abreviacao) values ("Viticultura e Enologia", "ENO");
 
-  
-  
-    
+
+-- select * from cursos;
+insert into alunos(matricula, nome, turma, email, idcurso, idfuncionario) values('201710066666', 'Gustavo Beche Lopes', '2 info', 'gubeche0@gmail.com', '1', '1'); 
+
+insert into categorias(nome, idfuncionario) values("Biologia", 1); 
+insert into categorias(nome, idfuncionario) values("Física", 1);
+insert into categorias(nome, idfuncionario) values("Geografia", 1);
+
+insert into livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) values ('978-85-96-00358-2', 'Geografia em rede', 'Volume 2', 'Edilson Adão', '3', 'url_foto', '1');
+
+insert into exemplares(livro, idfuncionario) values ('978-85-96-00358-2', 1);
+
