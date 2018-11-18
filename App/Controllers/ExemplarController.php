@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Page;
 use App\Model\Exemplar;
 use App\Model\Livro;
+use App\Model\Emprestimo;
 
 
 class ExemplarController extends Controller{
@@ -64,6 +65,7 @@ class ExemplarController extends Controller{
                 $codigos[] = $this->exemplar->create();
             }
 
+
         }catch(\Exception $e){
             Page::setErros($e->getMessage());
             header("Location: /exemplares/create");
@@ -87,7 +89,7 @@ class ExemplarController extends Controller{
             exit;
         }finally{
             Page::setSuccess("Exemplar alterado com sucesso!");
-            header("Location: /exemplar");
+            header("Location: /exemplares");
             exit;
         }
     }
@@ -99,7 +101,23 @@ class ExemplarController extends Controller{
         exit;
     }
 
+    public function getInfo($id){
+        if(Exemplar::exists($id)){
+            $idEmprestimo = Exemplar::emprestado($id);
+            return array(
+                "status" => true,
+                "exists" => true,
+                "emprestado" => $idEmprestimo ? true: false,
+                "livro" => Exemplar::listOne($id),
+                "emprestimo" => Emprestimo::listOne($idEmprestimo)
     
+            );
+        }else{
+            return array(
+                "status" => false
+            );
+        }
+    }
 
 
     

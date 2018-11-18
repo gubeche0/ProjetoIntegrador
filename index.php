@@ -3,13 +3,14 @@
     require_once("vendor/autoload.php");
 
     use Slim\Slim;
+    use App\Page;
     use App\Controllers\UserController;
     use App\Controllers\AlunoController;
-    use App\Page;
     use App\Controllers\CategoriaController;
     use App\Controllers\CursoController;
     use App\Controllers\LivroController;
     use App\Controllers\ExemplarController;
+    use App\Controllers\EmprestimoController;
 
     session_start();
 
@@ -19,7 +20,7 @@
     $app->get("/", function(){
         UserController::verifyLogin();        
         $page = new Page(array(
-            "page" => "/alunos"
+            "page" => "index"
         ));
         
     });
@@ -232,49 +233,73 @@
     });
 
 
-    $app->get("/livros/:id/edit", function($id){
+    $app->get("/exemplares/:id/edit", function($id){
         UserController::verifyLogin();
-        $livro = new LivroController();
-        $livro->pageEdit($id);
+        $exemplar = new ExemplarController();
+        $exemplar->pageEdit($id);
     });
 
-    $app->post("/livros/:id/edit", function($id){
+    $app->post("/exemplares/:id/edit", function($id){
         UserController::verifyLogin();
-        $livro = new LivroController();
-        $livro->update($id);
+        $exemplar = new ExemplarController();
+        $exemplar->update($id);
         
     });
 
-    $app->get("/livros/:id/delete", function($id){
+    $app->get("/exemplares/:id/delete", function($id){
         UserController::verifyLogin();
-        $livro = new LivroController();
-        $livro->delete($id);
+        $exemplar = new ExemplarController();
+        $exemplar->delete($id);
     });
 
 
 
+    //emprestimos
     $app->get("/emprestimos", function(){
         UserController::verifyLogin();
+        $empresimo = new EmprestimoController();
+        $empresimo->pageIndex();
+        
     });
-    
+
     $app->get("/emprestimos/create", function(){
-        UserController::verifyLogin();
+        UserController::verifyLogin();        
+        $emprestimo = new EmprestimoController();
+        $emprestimo->pageCreate();
+        
     });
 
     $app->post("/emprestimos/create", function(){
         UserController::verifyLogin();
+        $emprestimo = new EmprestimoController();
+        $emprestimo->create();
     });
 
-    $app->get("/emprestimos/:id/edit", function($id){
+    $app->get("/emprestimos/devolver", function(){
         UserController::verifyLogin();
+        $emprestimos = new EmprestimoController();
+        $emprestimos->pageDevolver();
     });
 
-    $app->post("/emprestimos/:id/edit", function($id){
+    $app->post("/emprestimos/devolver", function(){
         UserController::verifyLogin();
+        $emprestimos = new EmprestimoController();
+        $emprestimos->Devolver();
     });
-    
-    $app->get("/last", function(){
-        $sql = new App\Model\Database();
+
+
+
+
+
+
+    $app->post("/api/exemplares/info", function(){
+        UserController::verifyLogin();
+        
+        $exemplar = new ExemplarController();
+        $id = $_POST["id"];
+
+        echo json_encode($exemplar->getInfo($id));
+        // echo json_encode(array("status" => true));
     });
 
     $app->run();

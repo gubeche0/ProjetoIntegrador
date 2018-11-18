@@ -1,3 +1,4 @@
+DROP DATABASE IF exists gestaoLivrosIFRS;
 CREATE DATABASE gestaoLivrosIFRS;
 USE gestaoLivrosIFRS;
 
@@ -73,7 +74,7 @@ CREATE TABLE livros(
 
 
 CREATE TABLE exemplares(
-	id int not null auto_increment,
+	id int unsigned not null auto_increment,
     livro varchar(20) not null,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
@@ -85,11 +86,13 @@ CREATE TABLE exemplares(
 	foreign key(idfuncionario) references funcionarios(id)
 );
 
+ALTER TABLE exemplares AUTO_INCREMENT=1000;
+
+
 CREATE TABLE emprestimos(
 	id int not null auto_increment,
-    id_exemplar int not null,
+    id_exemplar int unsigned not null,
     matricula_aluno BIGINT not null,
-    `status` boolean,
     periodo_entrega tinyint,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
@@ -100,6 +103,8 @@ CREATE TABLE emprestimos(
     foreign key(matricula_aluno) references alunos(matricula),
 	foreign key(idfuncionario) references funcionarios(id)
 );
+
+
 
 insert into funcionarios(email, nome, senha) value("admin@admin.com", "Admin", '$2y$12$bzsgJDMISFB.dzHSuYz9Mu0OpX.tvxKWIxQZPC2QY4ndOkvApjiRa');
 -- SELECT id FROM funcionarios;
@@ -131,5 +136,8 @@ SELECT livros.nome, categorias.nome as categoriaNome FROM livros INNER JOIN cate
 
 insert into exemplares(livro, idfuncionario) values ('978-85-96-00358-2', 1);
 
+SELECT emprestimos.id, emprestimos.dataregistro, emprestimos.periodo_entrega, livros.nome, alunos.nome FROM emprestimos INNER JOIN exemplares INNER JOIN livros INNER JOIN alunos ON emprestimos.id_exemplar = exemplares.id AND exemplares.livro = livros.isbn AND emprestimos.matricula_aluno = alunos.matricula WHERE alunos.nome LIKE "%%" ORDER BY emprestimos.dataregistro ASC;
 
-
+insert into emprestimos(id_exemplar, matricula_aluno, periodo_entrega, idfuncionario) values('1000', '201710066666', '1', '1');
+UPDATE emprestimos set ativo = 0 WHERE id = 2;
+select * from emprestimos;

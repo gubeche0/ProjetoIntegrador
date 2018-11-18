@@ -18,7 +18,7 @@ class Livro{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT livros.*, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.nome LIKE :QUERY ORDER BY isbn ASC; ", array(
+        return $sql->select("SELECT livros.*, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.ativo = 1 AND livros.nome LIKE :QUERY ORDER BY isbn ASC; ", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         
@@ -132,7 +132,8 @@ class Livro{
         if(count($result) != 1){
             throw new \Exception("Livro não cadastrado!");
         }
-        $sql->query("DELETE FROM livros where isbn = :ISBN", array(
+        
+        $sql->query("UPDATE livros set ativo=0 WHERE isbn = :ISBN", array(
             ":ISBN" => $this->getIsbn()
         ));
     }

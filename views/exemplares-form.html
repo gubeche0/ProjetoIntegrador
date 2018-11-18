@@ -17,12 +17,12 @@
                         <div class="col-sm-10">
                             <select class="custom-select" name="livro" id="livro">
                                 {loop="$livros"}
-                                    <option value="{$value['isbn']}" {if="isset($exemplar) && $exemplar['livro'] == $value['id']"}selected{/if}>{$value["nome"]}</option>
+                                    <option value="{$value['isbn']}" {if="isset($exemplar) && $exemplar['livro'] == $value['isbn']"}selected{/if}>{$value["nome"]}</option>
                                 {/loop}
                             </select>
                         </div>
                     </div>
-
+                    {if="!isset($exemplar)"}
                     <div class="form-group row">
         
                         <label for="nome" class="col-sm-2 col-form-label">Quantidade:</label>
@@ -31,7 +31,7 @@
                             <input type="number" min="0" name="quantidade" id="quantidade" class="form-control" placeholder="Quantidade" required value="">
                         </div>
                     </div>
-        
+                    {/if}
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">
                         <input name="cancelar" id="cancelar" class="btn btn-danger col ml-1" type="reset" value="Cancelar">

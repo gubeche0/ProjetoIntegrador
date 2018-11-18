@@ -24,12 +24,13 @@
                             <select class="custom-select" name="livro" id="livro">
                                 <?php $counter1=-1;  if( isset($livros) && ( is_array($livros) || $livros instanceof Traversable ) && sizeof($livros) ) foreach( $livros as $key1 => $value1 ){ $counter1++; ?>
 
-                                    <option value="<?php echo htmlspecialchars( $value1['isbn'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($exemplar) && $exemplar['livro'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
+                                    <option value="<?php echo htmlspecialchars( $value1['isbn'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($exemplar) && $exemplar['livro'] == $value1['isbn'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
                                 <?php } ?>
 
                             </select>
                         </div>
                     </div>
+                    <?php if( !isset($exemplar) ){ ?>
 
                     <div class="form-group row">
         
@@ -39,7 +40,8 @@
                             <input type="number" min="0" name="quantidade" id="quantidade" class="form-control" placeholder="Quantidade" required value="">
                         </div>
                     </div>
-        
+                    <?php } ?>
+
                     <div class="form-group row">
                         <input name="salvar" id="salvar" class="btn btn-primary col" type="submit" value="Salvar">
                         <input name="cancelar" id="cancelar" class="btn btn-danger col ml-1" type="reset" value="Cancelar">

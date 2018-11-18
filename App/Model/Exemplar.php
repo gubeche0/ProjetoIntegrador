@@ -16,7 +16,7 @@ class Exemplar{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria FROM exemplares INNER JOIN livros ON exemplares.livro = livros.isbn WHERE exemplares.id LIKE :QUERY ORDER BY id ASC", array(
+        return $sql->select("SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria FROM exemplares INNER JOIN livros ON exemplares.livro = livros.isbn WHERE livros.ativo = 1 AND exemplares.ativo = 1 AND exemplares.id LIKE :QUERY ORDER BY id ASC", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         
@@ -35,9 +35,34 @@ class Exemplar{
 
         $this->setValues($result[0]);
     }
-    public static function listOne($id){
+
+    public static function exists($id){
         $sql = new Database();
         $result = $sql->select("SELECT * FROM exemplares WHERE id = :ID", array(
+            ":ID" => $id
+        ));
+        if(count($result) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function emprestado($id){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM exemplares INNER JOIN emprestimos ON exemplares.id = emprestimos.id_exemplar WHERE emprestimos.ativo = 1 AND exemplares.id = :ID", array(
+            ":ID" => $id
+        ));
+        if(count($result) > 0){
+            return $result[0]["id"];
+        }else{
+            return false;
+        }
+    }
+
+    public static function listOne($id){
+        $sql = new Database();
+        $result = $sql->select("SELECT exemplares.*, livros.nome, livros.volume, livros.autor, livros.urlfoto FROM exemplares INNER JOIN livros ON exemplares.livro = livros.isbn WHERE id = :ID", array(
             ":ID" => $id
         ));
 
@@ -90,7 +115,7 @@ class Exemplar{
         if(count($result) != 1){
             throw new \Exception("Exemplar não cadastrado!");
         }
-        $sql->query("DELETE FROM exemplares where id = :ID", array(
+        $sql->query("UPDATE exemplares set ativo=0 WHERE id = :ID", array(
             ":ID" => $this->getId()
         ));
     }

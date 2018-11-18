@@ -58,8 +58,9 @@
                     <li class={if="$page == 'emprestimos'"}"nav-item dropdown active" {else}'nav-item dropdown' {/if}>
                         <a class="nav-link dropdown-toggle" href="#" id="emprestimos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i> Empréstimos</a>
                         <div class="dropdown-menu" aria-labelledby="emprestimos">
-                            <a class="dropdown-item" href="#"><i class="fas fa-list"></i> Listar</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="/emprestimos"><i class="fas fa-list"></i> Listar</a>
+                            <a class="dropdown-item" href="/emprestimos/create"><i class="fas fa-plus"></i> Adicionar</a>
+                            <a class="dropdown-item" href="/emprestimos/devolver"><i class="fas fa-minus"></i> Devolver</a>
                         </div>
                     </li>
                     <li class="nav-item">

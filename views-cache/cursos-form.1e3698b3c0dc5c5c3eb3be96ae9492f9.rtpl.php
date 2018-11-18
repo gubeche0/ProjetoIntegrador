@@ -16,7 +16,7 @@
                 </div>
             <?php } ?>
 
-            <form method="post">
+            <form method="post" id="form">
                     
                     <div class="form-group row">
         
@@ -56,6 +56,11 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/res/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
+    <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
+    <script type="text/javascript" src="/res/js/validacao.js"></script>
 </body>
 
 </html>
