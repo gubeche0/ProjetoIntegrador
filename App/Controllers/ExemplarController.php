@@ -64,7 +64,9 @@ class ExemplarController extends Controller{
             for ($i=0; $i < $quantidade; $i++) { 
                 $codigos[] = $this->exemplar->create();
             }
-
+            $this->pageCreate();
+            echo "<script>gerarCodes(" . json_encode($codigos) . ");</script>";
+            exit;
 
         }catch(\Exception $e){
             Page::setErros($e->getMessage());
