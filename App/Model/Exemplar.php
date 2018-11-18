@@ -16,9 +16,14 @@ class Exemplar{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria FROM exemplares INNER JOIN livros ON exemplares.livro = livros.isbn WHERE livros.ativo = 1 AND exemplares.ativo = 1 AND exemplares.id LIKE :QUERY ORDER BY id ASC", array(
-            ":QUERY" => ("%" . $query . "%")
-        ));
+        return $sql->select("SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria, emprestimo
+            FROM exemplares 
+            INNER JOIN livros ON exemplares.livro = livros.isbn
+            LEFT JOIN (SELECT COUNT(*) as emprestimo, id_exemplar FROM emprestimos WHERE ativo = 1 GROUP BY id_exemplar) emprestimos ON exemplares.id = emprestimos.id_exemplar
+            WHERE livros.ativo = 1 AND exemplares.ativo = 1 
+            AND exemplares.id LIKE :QUERY ORDER BY id ASC;", array(
+                ":QUERY" => ("%" . $query . "%")
+            ));
         
     }
 

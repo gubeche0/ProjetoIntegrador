@@ -32,9 +32,7 @@
                 
                         
                       
-                <p class="float-right">
-                    <a class="text-right" href="#">Opções Avançada</a>
-                </p>
+                
                 <a href="/emprestimos/create">Novo Emprestimo</a>
                 <table class="table table-striped table-bordered table-hover" id="table">
                     <thead class="thead-light">

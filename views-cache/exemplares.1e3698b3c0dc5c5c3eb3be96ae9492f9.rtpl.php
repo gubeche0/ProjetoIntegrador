@@ -32,9 +32,7 @@
                 
                         
                       
-                <p class="float-right">
-                    <a class="text-right" href="#">Opções Avançada</a>
-                </p>
+                
                 <a href="/exemplares/create">Novo exemplar</a>
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-light">
@@ -53,7 +51,7 @@
                             <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td><?php echo htmlspecialchars( $value1["status"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-                            <td>-Emprestado-</td>
+                            <td><?php if( $value1['emprestimo'] ){ ?>Emprestado<?php }else{ ?>Disponivel<?php } ?></td>
                             <td>
                                 <!-- <a class="text-dark" href='#'><i class="fas fa-info" aria-hidden="true"></i> Info</a> | -->
                                 <a class="text-dark" href='/exemplares/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/edit'><i class="fas fa-edit" aria-hidden="true"></i> Editar</a> |

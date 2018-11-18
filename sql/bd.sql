@@ -142,7 +142,20 @@ SELECT emprestimos.id, emprestimos.dataregistro, emprestimos.periodo_entrega, li
 
 insert into emprestimos(id_exemplar, matricula_aluno, periodo_entrega, idfuncionario) values('1000', '201710066666', '1', '1');
 UPDATE emprestimos set ativo = 0 WHERE id = 2;
-select * from livros;
+select * from cursos;
+
+SELECT livros.*, categorias.nome as categoriaNome, exemplar.estoque
+        FROM livros LEFT JOIN (SELECT COUNT(*) AS estoque, livro FROM exemplares WHERE ativo = 1 GROUP BY livro) exemplar ON livros.isbn = exemplar.livro
+        INNER JOIN categorias ON livros.categoria = categorias.id 
+        WHERE livros.ativo = 1 AND livros.nome LIKE "%%" 
+        ORDER BY isbn ASC;
+
+SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria 
+	FROM exemplares 
+    INNER JOIN livros ON exemplares.livro = livros.isbn
+    LEFT JOIN (SELECT COUNT(*) as emprestimo, id_exemplar FROM emprestimos WHERE ativo = 1) emprestimos ON exemplares.id = emprestimos.id_exemplar
+    WHERE livros.ativo = 1 AND exemplares.ativo = 1 
+    AND exemplares.id LIKE "%%" ORDER BY id ASC;
 
   
   
