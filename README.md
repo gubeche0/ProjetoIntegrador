@@ -59,3 +59,4 @@ Dentro da pasta do projeto execute o seguinte comando:
 ### Virtualhost 
 Recomenda-se criar uma virtual host e deixar os arquivos do projeto dentro dela, para mais informações clique aqui(https://blog.mxcursos.com/virtual-host/)
 
+
