@@ -31,6 +31,7 @@
                     </div>
                 </div>
                 <input type="hidden" id="idEmprestimo" name="idEmprestimo">
+                <input type="hidden" id="idExemplar" name="idExemplar">
 
                 <div class="form-group row">
 
@@ -57,6 +58,17 @@
 
                         <input type="text" name="autorLivro" id="autorLivro" class="form-control" placeholder="Autor do Livro"
                             disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+
+                    <label for="nome" class="col-sm-2 col-form-label">Status do livro:</label>
+                    <div class="col-sm-10">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="statusLivro" name="statusLivro" checked>
+                            <label class="custom-control-label" for="statusLivro">Utilizavel</label>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -154,6 +166,7 @@
                         $("#exemplar").removeClass("is-invalid");
                         $("#exemplar").addClass("is-valid");
                         $("#idEmprestimo").val(e.emprestimo.id);
+                        $("#idExemplar").val(e.livro.id);
                     } else {
                         $("#exemplar-error").html("Livro não emprestado!");
                         $("#exemplar-error").show();

@@ -96,15 +96,19 @@ class Emprestimo{
 
     }
 
-    public function devolver($id, $statusLivro = "Utilizavel"){
+    public function devolver($id, $statusLivro = "Utilizavel", $idExemplar = NULL){
         $sql = new Database();
         $sql->query("UPDATE emprestimos set ativo=0 WHERE id = :ID", array(
             ":ID" => $id
         ));
-        $sql->query("UPDATE exemplares set `status`=:STATUS WHERE id = :ID", array(
-            ":ID" => $this->getExemplar(),
-            ":STATUS" => $statusLivro
-        ));
+        if($statusLivro == "Não Utilizavel"){
+            
+            $a = $sql->query("UPDATE exemplares set ativo=0, `status`=:STATUS WHERE id = :ID", array(
+                ":ID" => $idExemplar,
+                ":STATUS" => $statusLivro
+            ));
+
+        }
     }
 
     public function setValues($values){

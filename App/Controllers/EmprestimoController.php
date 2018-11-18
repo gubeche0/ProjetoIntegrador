@@ -72,7 +72,9 @@ class EmprestimoController extends Controller{
     public function devolver(){
         try{
             
-            $this->emprestimo->devolver($_POST["idEmprestimo"]);
+            $status = isset($_POST["statusLivro"]) ? $_POST["idEmprestimo"] : "Não Utilizavel";
+            $exemplar = isset($_POST["idExemplar"]) ? $_POST["idExemplar"] : "o";
+            $this->emprestimo->devolver($_POST["idEmprestimo"], $status, $exemplar);
         }catch(\Exception $e){
             Page::setErros($e->getMessage());
             header("Location: /emprestimos/devolver");
