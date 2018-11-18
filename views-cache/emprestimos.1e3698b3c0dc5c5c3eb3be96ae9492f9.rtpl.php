@@ -1,29 +1,35 @@
-    <div class="container">
+<?php if(!class_exists('Rain\Tpl')){exit;}?>    <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h1 class="panel-title text-center my-3">Gestão de Emprestimos</h1>
             </div>
             <div class="panel-body">
-                {loop="App\Page::getErros()"}
+                <?php $counter1=-1; $newvar1=App\Page::getErros(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+
                     <div class="alert alert-danger" role="alert">
-                        {$value}
+                        <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
                     </div>
-                {/loop}
-                {loop="App\Page::getSuccess()"}
+                <?php } ?>
+
+                <?php $counter1=-1; $newvar1=App\Page::getSuccess(); if( isset($newvar1) && ( is_array($newvar1) || $newvar1 instanceof Traversable ) && sizeof($newvar1) ) foreach( $newvar1 as $key1 => $value1 ){ $counter1++; ?>
+
                     <div class="alert alert-success" role="alert">
-                        {$value}
+                        <?php echo htmlspecialchars( $value1, ENT_COMPAT, 'UTF-8', FALSE ); ?>
+
                     </div>
-                {/loop}
-                
+                <?php } ?>
+
+                <form action="" method="get">
 
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="query" name="query" placeholder="Pesquisar Alunos">
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
                         </div>
                     </div>
 
-                
+                </form>
                         
                       
                 <p class="float-right">
@@ -42,15 +48,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {loop="$emprestimos"}
+                        <?php $counter1=-1;  if( isset($emprestimos) && ( is_array($emprestimos) || $emprestimos instanceof Traversable ) && sizeof($emprestimos) ) foreach( $emprestimos as $key1 => $value1 ){ $counter1++; ?>
+
                         <tr>
-                            <td>{$value["id"]}</td>
-                            <td>{$value["aluno"]}</td>
-                            <td>{$value["livro"]}</td>
-                            <td>{$value["codigo"]}</td>
-                            <td>{$value["dataregistro"]}</td>
-                            <td>{$value["periodo_entrega"]} Anos</td>
-                        {/loop}
+                            <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php echo htmlspecialchars( $value1["aluno"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php echo htmlspecialchars( $value1["livro"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php echo htmlspecialchars( $value1["codigo"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php echo htmlspecialchars( $value1["dataregistro"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php echo htmlspecialchars( $value1["periodo_entrega"], ENT_COMPAT, 'UTF-8', FALSE ); ?> Anos</td>
+                        <?php } ?>
+
                     </tbody>
                 </table>
                 

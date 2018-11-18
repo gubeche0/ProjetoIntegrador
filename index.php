@@ -20,7 +20,8 @@
     $app->get("/", function(){
         UserController::verifyLogin();        
         $page = new Page(array(
-            "page" => "index"
+            "page" => "index",
+            "footer" => true
         ));
         
     });

@@ -130,7 +130,6 @@ insert into categorias(nome, idfuncionario) values("Física", 1);
 insert into categorias(nome, idfuncionario) values("Geografia", 1);
 
 insert into livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) values ('978-85-96-00358-2', 'Geografia em rede', 'Volume 2', 'Edilson Adão', '3', 'url_foto', '1');
-INSERT INTO livros(isbn, nome, volume, autor, categoria, urlfoto, idfuncionario) VALUES ( '2323', 'nome do livro', 'Volume 1', 'autor', '1', 'foto', '1');
 select * from livros;
 SELECT livros.nome, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.nome LIKE "%%" ORDER BY isbn ASC; 
 
@@ -143,23 +142,9 @@ insert into emprestimos(id_exemplar, matricula_aluno, periodo_entrega, idfuncion
 UPDATE emprestimos set ativo = 0 WHERE id = 2;
 select * from livros;
 
-SELECT livros.*, categorias.nome as categoriaNome, count(exemplares.id) as estoque 
-	FROM livros LEFT JOIN exemplares ON exemplares.livro = livros.isbn 
-    INNER JOIN categorias ON livros.categoria = categorias.id 
-    WHERE 
-    livros.ativo = 1 AND livros.nome LIKE "%%" 
-    GROUP BY exemplares.livro ORDER BY isbn ASC;
-    
-select count(*) from exemplares GROUP BY livro;
 SELECT livros.*, categorias.nome as categoriaNome, exemplar.estoque
 	FROM livros LEFT JOIN (SELECT COUNT(*) AS estoque, livro FROM exemplares WHERE ativo = 1 GROUP BY livro) exemplar ON livros.isbn = exemplar.livro
     INNER JOIN categorias ON livros.categoria = categorias.id 
     WHERE livros.ativo = 1 AND livros.nome LIKE "%%" 
     ORDER BY isbn ASC;
     
-SELECT livros.*, categorias.nome as categoriaNome
-	FROM livros  
-    INNER JOIN categorias ON livros.categoria = categorias.id 
-    WHERE 
-    livros.ativo = 1 AND livros.nome LIKE "%%" 
-	ORDER BY isbn ASC;
