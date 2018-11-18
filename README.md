@@ -1,5 +1,5 @@
-#PROJETO INTEGRADOR
-__Matérias do curso técnico envolvidas no projeto: __Programação Web II, Desenvolvimento de Sistemas Web, Programação de Scripts, Análise e Projeto de Sistemas Web e Banco de Dados.
+# PROJETO INTEGRADOR
+__Matérias do curso técnico envolvidas no projeto:__ Programação Web II, Desenvolvimento de Sistemas Web, Programação de Scripts, Análise e Projeto de Sistemas Web e Banco de Dados.
 
 Queremos agradecer a todos os professores que nos ajudaram a concluir nosso projeto do começo ao fim.
 
@@ -8,7 +8,7 @@ Nosso sistema tem como objetivo ajudar na hora de organizar os livros e os empr�
 
 Assim, facilitando e agilizando os processos de distribuição e devolução dos livros, auxiliando os funcionários a gerenciar os livros sem muita deficultade.
 
-##Linguagens utilizadas
+## Linguagens utilizadas
 1. __Php__
 2. __JavaScript__
 3. __HTML__
@@ -24,39 +24,45 @@ Assim, facilitando e agilizando os processos de distribuição e devolução dos
 Também utilizamos o Visual Studio Code, Sublime, Git(junto com o Bitbucket), Trello,
 Mysql Workbench, brModelo e o Astah, para nos organizar e programar com as linguagens e bibliotecas a cima.
 
-###Componentes do grupo:
+### Componentes do grupo:
 * __Gustavo Beche Lopes__
 * __Pedro Lucas Viel Cristofoli__
 * __Sednei Rossetti Junior__
 
-##Tutorial de como rodar o servidor:
+## Tutorial de como rodar o servidor:
 
-###requisitos para rodar
+### requisitos para rodar
     * composer      
 
-##SQL
+## SQL
 
 Primeiramente, é precio configurar o arquivo config.php dentro da pasta App.
 É necessário executar o código SQL dentro da pasta sql.
 Também é necessário inserir ousúario com o comando:
-	'insert into funcionarios(email, nome, senha) value( EMAIL , NOME , HASH DA SENHA );'
+
+```php
+insert into funcionarios(email, nome, senha) value( EMAIL , NOME , HASH DA SENHA );
+```
 O hash da senha deve ser obtido através da função `password_hash` no php.
 
 
 Primeiro de tudo clone o projeto com o seguinte comando:
-   'Git clone https://gubeche0@bitbucket.org/gubeche0/projetointegrador.git'
-
+```git
+git clone https://gubeche0@bitbucket.org/gubeche0/projetointegrador.git
+```
 Agora é preciso entrar no diretório criado e  baixar as dependências do projeto utilizando o ‘composer’
-    'Cd projetointegrador'
-    'Composer update '
-
+```shell
+$Cd projetointegrador
+$Composer update 
+```
 Agora pra executar existe 3 formas diferente, utilizando o servidor embutido do php, criando uma virtualhost para o projeto ou colocando na raiz do servidor
 
 ### Servidor embutido do php
 Dentro da pasta do projeto execute o seguinte comando:
-    'php -S localhost:8000'
-
+```
+$php -S localhost:8000
+```
 ### Virtualhost 
-Recomenda-se criar uma virtual host e deixar os arquivos do projeto dentro dela, para mais informações clique aqui(https://blog.mxcursos.com/virtual-host/)
+Recomenda-se criar uma virtual host e deixar os arquivos do projeto dentro dela, para mais informações clique [aqui](https://blog.mxcursos.com/virtual-host/)
 
 
