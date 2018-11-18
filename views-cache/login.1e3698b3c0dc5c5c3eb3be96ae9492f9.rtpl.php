@@ -44,16 +44,9 @@
             <input type="email" id="email" name="email" class="form-control" placeholder="Endereço de email" required autofocus>
             <label for="pass" class="sr-only">Senha</label>
             <input type="password" id="pass" name="pass" class="form-control" placeholder="Senha" required>
-            <div class=" form-group text-justify mt-3">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="lembrar" name="lembrar" >
-                    <label class="custom-control-label" for="lembrar">Continuar Logado</label>
-
-                </div>
-            </div>
+            
         </div>
         
-        <a href="#" class="ml-1">Esqueci a senha</a>
         <button class="btn btn-lg btn btn-success btn-block mt-3" type="submit">Entrar</button>
         
     </form>
