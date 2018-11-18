@@ -44,6 +44,7 @@
                             <th>Volume</th>
                             <th>Autor</th>
                             <th>Categoria</th>
+                            <th>Estoque</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -56,6 +57,7 @@
                             <td><?php echo htmlspecialchars( $value1["volume"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td><?php echo htmlspecialchars( $value1["autor"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
                             <td><?php echo htmlspecialchars( $value1["categoriaNome"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+                            <td><?php if( empty($value1['estoque']) ){ ?>0<?php }else{ ?><?php echo htmlspecialchars( $value1["estoque"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?></td>
                             <td>
                                 <!-- <a class="text-dark" href='#'><i class="fas fa-info" aria-hidden="true"></i> Info</a> | -->
                                 <a class="text-dark" href='/livros/<?php echo htmlspecialchars( $value1["isbn"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/edit'><i class="fas fa-edit" aria-hidden="true"></i> Editar</a> |

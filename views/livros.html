@@ -38,6 +38,7 @@
                             <th>Volume</th>
                             <th>Autor</th>
                             <th>Categoria</th>
+                            <th>Estoque</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -49,6 +50,7 @@
                             <td>{$value["volume"]}</td>
                             <td>{$value["autor"]}</td>
                             <td>{$value["categoriaNome"]}</td>
+                            <td>{if="empty($value['estoque'])"}0{else}{$value["estoque"]}{/if}</td>
                             <td>
                                 <!-- <a class="text-dark" href='#'><i class="fas fa-info" aria-hidden="true"></i> Info</a> | -->
                                 <a class="text-dark" href='/livros/{$value["isbn"]}/edit'><i class="fas fa-edit" aria-hidden="true"></i> Editar</a> |

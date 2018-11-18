@@ -18,7 +18,11 @@ class Livro{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT livros.*, categorias.nome as categoriaNome FROM livros INNER JOIN categorias ON livros.categoria = categorias.id WHERE livros.ativo = 1 AND livros.nome LIKE :QUERY ORDER BY isbn ASC; ", array(
+        return $sql->select("SELECT livros.*, categorias.nome as categoriaNome, exemplar.estoque
+        FROM livros LEFT JOIN (SELECT COUNT(*) AS estoque, livro FROM exemplares WHERE ativo = 1 GROUP BY livro) exemplar ON livros.isbn = exemplar.livro
+        INNER JOIN categorias ON livros.categoria = categorias.id 
+        WHERE livros.ativo = 1 AND livros.nome LIKE :QUERY 
+        ORDER BY isbn ASC;", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         

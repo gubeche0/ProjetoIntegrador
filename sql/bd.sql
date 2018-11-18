@@ -50,6 +50,7 @@ CREATE TABLE categorias(
 	nome varchar(60),
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idfuncionario int not null,
+    ativo bool not null default 1,
 	primary key(id),
     foreign key(idfuncionario) references funcionarios(id)
 
@@ -140,4 +141,25 @@ SELECT emprestimos.id, emprestimos.dataregistro, emprestimos.periodo_entrega, li
 
 insert into emprestimos(id_exemplar, matricula_aluno, periodo_entrega, idfuncionario) values('1000', '201710066666', '1', '1');
 UPDATE emprestimos set ativo = 0 WHERE id = 2;
-select * from emprestimos;
+select * from livros;
+
+SELECT livros.*, categorias.nome as categoriaNome, count(exemplares.id) as estoque 
+	FROM livros LEFT JOIN exemplares ON exemplares.livro = livros.isbn 
+    INNER JOIN categorias ON livros.categoria = categorias.id 
+    WHERE 
+    livros.ativo = 1 AND livros.nome LIKE "%%" 
+    GROUP BY exemplares.livro ORDER BY isbn ASC;
+    
+select count(*) from exemplares GROUP BY livro;
+SELECT livros.*, categorias.nome as categoriaNome, exemplar.estoque
+	FROM livros LEFT JOIN (SELECT COUNT(*) AS estoque, livro FROM exemplares WHERE ativo = 1 GROUP BY livro) exemplar ON livros.isbn = exemplar.livro
+    INNER JOIN categorias ON livros.categoria = categorias.id 
+    WHERE livros.ativo = 1 AND livros.nome LIKE "%%" 
+    ORDER BY isbn ASC;
+    
+SELECT livros.*, categorias.nome as categoriaNome
+	FROM livros  
+    INNER JOIN categorias ON livros.categoria = categorias.id 
+    WHERE 
+    livros.ativo = 1 AND livros.nome LIKE "%%" 
+	ORDER BY isbn ASC;

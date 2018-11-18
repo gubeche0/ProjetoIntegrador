@@ -13,7 +13,7 @@ class Categoria{
 
     public static function listAll($query = ""){
         $sql = new Database();
-        return $sql->select("SELECT id, nome FROM categorias WHERE nome LIKE :QUERY ORDER BY id ASC", array(
+        return $sql->select("SELECT id, nome FROM categorias WHERE ativo = 1 AND nome LIKE :QUERY ORDER BY id ASC", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         
@@ -47,13 +47,6 @@ class Categoria{
 
     public function create(){
         $sql = new Database();
-        $result = $sql->select("SELECT * FROM categorias WHERE nome = :NOME", array(
-            ":NOME" => $this->getNome()
-        ));
-        
-        if(count($result) > 0){
-            throw new \Exception("Categoria já cadastrada!", 1);
-        }
 
         return $sql->query("INSERT INTO categorias(nome, idfuncionario) VALUES (:NOME , :IDFUNCIONARIO)", array(
             ":NOME" => $this->getNome(),
@@ -89,7 +82,7 @@ class Categoria{
         if(count($result) != 1){
             throw new \Exception("Categoria não cadastrado!");
         }
-        $sql->query("DELETE FROM categorias where id = :ID", array(
+        $sql->query("UPDATE categorias set ativo=0 WHERE id = :ID", array(
             ":ID" => $this->getId()
         ));
     }
