@@ -38,7 +38,7 @@ class Exemplar{
 
     public static function exists($id){
         $sql = new Database();
-        $result = $sql->select("SELECT * FROM exemplares WHERE id = :ID", array(
+        $result = $sql->select("SELECT * FROM exemplares INNER JOIN livros on exemplares.livro = livros.isbn WHERE exemplares.ativo = 1 AND livros.ativo = 1 AND  id = :ID", array(
             ":ID" => $id
         ));
         if(count($result) > 0){
@@ -50,7 +50,7 @@ class Exemplar{
 
     public static function emprestado($id){
         $sql = new Database();
-        $result = $sql->select("SELECT * FROM exemplares INNER JOIN emprestimos ON exemplares.id = emprestimos.id_exemplar WHERE emprestimos.ativo = 1 AND exemplares.id = :ID", array(
+        $result = $sql->select("SELECT * FROM exemplares INNER JOIN emprestimos ON exemplares.id = emprestimos.id_exemplar WHERE emprestimos.ativo = 1 AND exemplares.ativo = 1 AND exemplares.id = :ID", array(
             ":ID" => $id
         ));
         if(count($result) > 0){

@@ -5,7 +5,7 @@
     <title>Gestão Livros IFRS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="/res/ifrs.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/res/img/ifrs.ico?v=2" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-inverse navbar-expand-xl navbar-dark mb-4" style="background-color: green;">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/res/if2.png" height="30" class="d-inline-block align-top">
+                <img src="/res/img/if2.png" height="30" class="d-inline-block align-top">
                 IFRS
             </a>
 

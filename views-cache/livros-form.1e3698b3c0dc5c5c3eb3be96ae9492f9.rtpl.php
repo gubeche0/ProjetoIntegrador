@@ -41,7 +41,7 @@
                         <label for="nome" class="col-sm-2 col-form-label">Volume:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="volume" id="volume" class="form-control" placeholder="Volume" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                            <input type="text" name="volume" id="volume" class="form-control" placeholder="Volume" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["volume"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
                         </div>
                     </div> 
 
@@ -50,7 +50,7 @@
                         <label for="nome" class="col-sm-2 col-form-label">Autor:</label>
                         <div class="col-sm-10">
         
-                            <input type="text" name="autor" id="autor" class="form-control" placeholder="autor" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
+                            <input type="text" name="autor" id="autor" class="form-control" placeholder="autor" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["autor"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
                         </div>
                     </div>
 

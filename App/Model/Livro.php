@@ -112,14 +112,24 @@ class Livro{
             throw new \Exception("Livro não cadastrado!");
         }
 
-        $sql->query("UPDATE livros set nome=:NOME, volume=:VOLUME, autor=:AUTOR, categoria=:CATEGORIA, urlfoto=:FOTO WHERE isbn = :ISBN", array(
-            ":ISBN" => $this->getIsbn(),
-            ":NOME" => $this->getNome(),
-            ":VOLUME" => $this->getVolume(),
-            ":AUTOR" => $this->getAutor(),
-            ":CATEGORIA" => $this->getCategoria(),
-            ":FOTO" => $this->getFoto(),
-        ));
+        if($this->getFoto()){
+            $sql->query("UPDATE livros set nome=:NOME, volume=:VOLUME, autor=:AUTOR, categoria=:CATEGORIA, urlfoto=:FOTO WHERE isbn = :ISBN", array(
+                ":ISBN" => $this->getIsbn(),
+                ":NOME" => $this->getNome(),
+                ":VOLUME" => $this->getVolume(),
+                ":AUTOR" => $this->getAutor(),
+                ":CATEGORIA" => $this->getCategoria(),
+                ":FOTO" => $this->getFoto(),
+            )); 
+        }else{
+            $sql->query("UPDATE livros set nome=:NOME, volume=:VOLUME, autor=:AUTOR, categoria=:CATEGORIA WHERE isbn = :ISBN", array(
+                ":ISBN" => $this->getIsbn(),
+                ":NOME" => $this->getNome(),
+                ":VOLUME" => $this->getVolume(),
+                ":AUTOR" => $this->getAutor(),
+                ":CATEGORIA" => $this->getCategoria()
+            ));
+        }
         
     }
 

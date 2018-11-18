@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestão Livros IFRS</title>
-    <link rel="shortcut icon" href="/res/ifrs.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/res/img/ifrs.ico?v=2" type="image/x-icon">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -37,7 +37,7 @@
     
     <form class="form-signin col-sm-3 mx-auto " style="margin-top: 8%;" method="post" action="/login">
         <div class="text-center">
-            <img class="mb-4" src="/res/if-logo.png" alt="Logo do IFRS" width="100" />
+            <img class="mb-4" src="/res/img/if-logo.png" alt="Logo do IFRS" width="100" />
 
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
             <label for="email" class="sr-only">Endereço de email</label>
