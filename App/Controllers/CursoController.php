@@ -17,9 +17,7 @@ class CursoController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
-        $this->getPage("outros", array(
-            "footer" => false
-        ));
+        $this->getPage("outros");
 
         $this->page->setTpl("cursos", array(
             "curso" => Curso::listAll($query)

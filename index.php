@@ -21,8 +21,10 @@
         UserController::verifyLogin();        
         $page = new Page(array(
             "page" => "index",
-            "footer" => true
+            "header" => false,
+            "footer" => false
         ));
+        $page->setTpl("index");
         
     });
 
