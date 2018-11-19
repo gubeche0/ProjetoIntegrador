@@ -48,7 +48,7 @@ O hash da senha deve ser obtido através da função `password_hash` no php.
 
 Primeiro de tudo clone o projeto com o seguinte comando:
 ```git
-git clone https://gubeche0@bitbucket.org/gubeche0/projetointegrador.git
+git clone https://github.com/gubeche0/ProjetoIntegrador.git
 ```
 Agora é preciso entrar no diretório criado e  baixar as dependências do projeto utilizando o ‘composer’
 ```shell
