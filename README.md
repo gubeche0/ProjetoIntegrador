@@ -45,7 +45,7 @@ Primeiramente, é precio configurar o arquivo config.php dentro da pasta App.
 Também é necessário inserir o usúario com o comando:
 
 ```php
-insert into funcionarios(email, nome, senha) value( EMAIL , NOME , HASH DA SENHA );
+insert into funcionarios(email, nome, senha) value( 'EMAIL' , 'NOME' , 'HASH DA SENHA' );
 ```
 O hash da senha deve ser obtido através da função `password_hash` no php.
 
