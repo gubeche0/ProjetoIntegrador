@@ -60,19 +60,23 @@
                 <div class="form-group row">
                     <label for="categoria" class="col-sm-2 col-form-label">Categoria:</label>
                     <div class="col-sm-10">
-                        <select class="custom-select" name="categoria" id="categoria">
+                        <select class="chosen-select" name="categoria" id="categoria">
                             <?php $counter1=-1;  if( isset($categorias) && ( is_array($categorias) || $categorias instanceof Traversable ) && sizeof($categorias) ) foreach( $categorias as $key1 => $value1 ){ $counter1++; ?>
 
-                            <option value="<?php echo htmlspecialchars( $value1['id'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($livro) && $livro['categoria'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </option> <?php } ?> </select> </div> </div> <div class="form-group row">
+                            <option value="<?php echo htmlspecialchars( $value1['id'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" <?php if( isset($livro) && $livro['categoria'] == $value1['id'] ){ ?>selected<?php } ?>><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?> </option> <?php } ?> 
+                        </select> 
+                    </div> 
+                </div> 
+                <div class="form-group row">
 
-                                <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
-                                <div class="col-sm-10">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="foto" name="foto">
-                                        <label class="custom-file-label" for="foto">Escolher arquivo</label>
-                                    </div>
+                    <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto" name="foto">
+                            <label class="custom-file-label" for="foto">Escolher arquivo</label>
+                        </div>
 
-                                </div>
+                </div>
                     </div>
 
                     <div class="form-group row">
@@ -100,6 +104,12 @@
 <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
 <script type="text/javascript" src="/res/js/validacao.js"></script>
+<script src="/res/js/chosen.jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#categoria").chosen();
+        });
+    </script>
 </body>
 
 </html>

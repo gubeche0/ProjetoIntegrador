@@ -35,7 +35,7 @@
                     <div class="col-sm-10">
 
                         <input type="text" name="nomeLivro" id="nomeLivro" class="form-control" placeholder="Nome do Livro"
-                            readonly value="">
+                            disabled value="">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -67,7 +67,8 @@
         <div class="form-group row">
             <label for="livro" class="col-sm-2 col-form-label">Aluno:</label>
             <div class="col-sm-10">
-                <select class="custom-select" name="aluno" id="aluno">
+                <select data-placeholder="Selecione o aluno" class="chosen-select" name="aluno" id="aluno" required>
+                    <option value=""></option>
                     <?php $counter1=-1;  if( isset($alunos) && ( is_array($alunos) || $alunos instanceof Traversable ) && sizeof($alunos) ) foreach( $alunos as $key1 => $value1 ){ $counter1++; ?>
 
                     <option value="<?php echo htmlspecialchars( $value1['matricula'], ENT_COMPAT, 'UTF-8', FALSE ); ?>"><?php echo htmlspecialchars( $value1["nome"], ENT_COMPAT, 'UTF-8', FALSE ); ?> - <?php echo htmlspecialchars( $value1["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?></option>
@@ -109,18 +110,14 @@
 <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
 
+<script src="/res/js/chosen.jquery.min.js"></script>
 
 
 <script>
     var livro = false;
     $(document).ready(function () {
-        $(window).keydown(function (event) {
-            if (event.keyCode == 13) {
-                event.preventDefault();
-                return false;
-            }
-        });
-
+        
+        $("#aluno").chosen();
         $("#exemplar").change(function () {
             $.ajax({
                 method: "POST",

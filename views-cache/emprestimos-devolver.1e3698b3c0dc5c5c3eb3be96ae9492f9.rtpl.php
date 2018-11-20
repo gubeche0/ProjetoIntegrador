@@ -39,7 +39,7 @@
                     <div class="col-sm-10">
 
                         <input type="text" name="nomeLivro" id="nomeLivro" class="form-control" placeholder="Nome do Livro"
-                            readonly value="">
+                            disabled value="">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -133,6 +133,7 @@
 <script>
     var livro = false;
     $(document).ready(function () {
+
         $(window).keydown(function (event) {
             if (event.keyCode == 13) {
                 event.preventDefault();

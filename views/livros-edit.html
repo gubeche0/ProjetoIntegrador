@@ -54,18 +54,22 @@
                 <div class="form-group row">
                     <label for="categoria" class="col-sm-2 col-form-label">Categoria:</label>
                     <div class="col-sm-10">
-                        <select class="custom-select" name="categoria" id="categoria">
+                        <select class="chosen-select" name="categoria" id="categoria">
                             {loop="$categorias"}
-                            <option value="{$value['id']}" {if="isset($livro) && $livro['categoria'] == $value['id']"}selected{/if}>{$value["nome"]} </option> {/loop} </select> </div> </div> <div class="form-group row">
+                            <option value="{$value['id']}" {if="isset($livro) && $livro['categoria'] == $value['id']"}selected{/if}>{$value["nome"]} </option> {/loop} 
+                        </select> 
+                    </div> 
+                </div> 
+                <div class="form-group row">
 
-                                <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
-                                <div class="col-sm-10">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="foto" name="foto">
-                                        <label class="custom-file-label" for="foto">Escolher arquivo</label>
-                                    </div>
+                    <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
+                    <div class="col-sm-10">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto" name="foto">
+                            <label class="custom-file-label" for="foto">Escolher arquivo</label>
+                        </div>
 
-                                </div>
+                </div>
                     </div>
 
                     <div class="form-group row">
@@ -93,6 +97,12 @@
 <script type="text/javascript" src="/res/js/additional-methods.min.js"></script>
 <script type="text/javascript" src="/res/js/localization/messages_pt_BR.js"></script>
 <script type="text/javascript" src="/res/js/validacao.js"></script>
+<script src="/res/js/chosen.jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#categoria").chosen();
+        });
+    </script>
 </body>
 
 </html>
