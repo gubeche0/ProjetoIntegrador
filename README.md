@@ -1,7 +1,15 @@
 # PROJETO INTEGRADOR
-__Matérias do curso técnico envolvidas no projeto:__ Programação Web II, Desenvolvimento de Sistemas Web, Programação de Scripts, Análise e Projeto de Sistemas Web e Banco de Dados.
+## Matérias do curso técnico envolvidas no projeto:
+ - Programação Web II
 
-Queremos agradecer a todos os professores que nos ajudaram a concluir nosso projeto do começo ao fim.
+ - Desenvolvimento de Sistemas Web
+ 
+ - Programação de Scripts
+ 
+ - Análise e Projeto de Sistemas Web
+ 
+ - Banco de Dados.
+
 
 ## Sistema para gestão de livros do IFRS-BG
 Nosso sistema tem como objetivo ajudar na hora de organizar os livros e os empréstimos para o ensino médio do Instituto Federal do Rio Grande do Sul, Campus Bento Gonçalves.
@@ -14,31 +22,27 @@ Assim, facilitando e agilizando os processos de distribuição e devolução dos
 3. __HTML__
 
 
-## Bibliotecas utilizadas
+## Bibliotecas e frameworks utilizadas
 1. __Slim framework__
 2. __Raintpl__
 3. __Bootstrap__
 4. __Sweet Alert 2__
 5. __Jquery__
  
-Também utilizamos o Visual Studio Code, Sublime, Git(junto com o Bitbucket), Trello,
-Mysql Workbench, brModelo e o Astah, para nos organizar e programar com as linguagens e bibliotecas a cima.
+Também utilizamos o Visual Studio Code, Sublime, Git, Composer, Trello, Mysql Workbench, brModelo e o Astah, para nos organizar e programar com as linguagens e bibliotecas a cima.
 
 ### Componentes do grupo:
 * __Gustavo Beche Lopes__
 * __Pedro Lucas Viel Cristofoli__
 * __Sednei Rossetti Junior__
 
-## Tutorial de como rodar o servidor:
-
-### requisitos para rodar
-    * composer      
+# Tutorial de como rodar o sistema:
 
 ## SQL
 
 Primeiramente, é precio configurar o arquivo config.php dentro da pasta App.
 É necessário executar o código SQL dentro da pasta sql.
-Também é necessário inserir ousúario com o comando:
+Também é necessário inserir o usúario com o comando:
 
 ```php
 insert into funcionarios(email, nome, senha) value( EMAIL , NOME , HASH DA SENHA );
