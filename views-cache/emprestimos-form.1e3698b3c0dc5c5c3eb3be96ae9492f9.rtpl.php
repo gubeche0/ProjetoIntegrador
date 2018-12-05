@@ -83,7 +83,7 @@
             <label for="nome" class="col-sm-2 col-form-label">Periodo de entrega:</label>
             <div class="col-sm-10">
 
-                <input type="number" name="periodoEntrega" id="periodoEntrega" class="form-control" placeholder="Codigo de barras"
+                <input type="number" min="1" max="4" name="periodoEntrega" id="periodoEntrega" class="form-control" placeholder="Periodo de entrega"
                     required value="1">
             </div>
         </div>

@@ -32,9 +32,7 @@
                 
                         
                       
-                <p class="float-right">
-                    <a class="text-right" href="#">Opções Avançada</a>
-                </p>
+                
                 <a href="/cursos/create">Novo Curso</a>
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-light">

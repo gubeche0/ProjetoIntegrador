@@ -29,12 +29,11 @@
                         </div>
                     </div>
 
-                
-                        
+                                        
                       
-                <p class="float-right">
-                    <a class="text-right" href="#">Opções Avançada</a>
-                </p>
+                <!-- <p class="float-right">
+                    <a class="text-right" href="#">Importar Alunos</a>
+                </p> -->
                 <a href="/alunos/create">Novo Aluno</a>
                 <table class="table table-striped table-bordered table-hover" id="table">
                     <thead class="thead-light">
@@ -75,14 +74,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.all.min.js"></script>
+
     <script>
         $("#query").quicksearch('table tbody tr')
         function excluir(id){
-            var resposta = confirm("Deseja deletar a criança???");
-            
-            if(resposta == true){
+            // var resposta = confirm("Deseja deletar a aluno?");
+            swal({
+            title: 'Deseja deletar o aluno?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, deletar!',
+            cancelButtonText: "Cancelar",
+            focusCancel: true
+        }).then((result) => {
+            if (result.value) {
                 window.location.href = '/alunos/' + id + '/delete';
             }
+
+        })
         }
         
     </script>
