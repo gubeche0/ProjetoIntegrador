@@ -18,12 +18,31 @@ class AlunoController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
+        $itemsPerPage = 10;
+
         $this->getPage("alunos", array(
             "footer" => false
         ));
 
+        $pages = [];
+
+        for ($i=0; $i < Aluno::countPages($query, $itemsPerPage); $i++) { 
+            array_push($pages, [
+                'href'=>'/alunos?'.http_build_query([
+                    'page'=>$i + 1,
+                    'query'=>$query
+                ]),
+                'text'=>$i + 1
+            ]);
+        }
+        
+
         $this->page->setTpl("alunos", array(
-            "alunos" => Aluno::listAll($query)
+            "alunos" => Aluno::listPage($page, $query, $itemsPerPage),
+            "page" => $page,
+            "pages" => $pages,
+            "query" => $query
         ));
     }
 

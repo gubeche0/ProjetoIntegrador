@@ -19,6 +19,32 @@ class Aluno{
         ));
     }
 
+    public static function listPage($page, $query = "", $itemsPerPage = 10){
+
+        $start = ($page - 1) * $itemsPerPage;
+        $sql = new Database();
+        
+        return $sql->select("SELECT alunos.nome, cursos.abreviacao as curso, alunos.matricula, alunos.email 
+            FROM alunos INNER JOIN cursos ON cursos.id = alunos.idcurso 
+            WHERE alunos.ativo = 1 AND (
+                alunos.nome LIKE :QUERY OR 
+                alunos.matricula LIKE :QUERY 
+            ) 
+            ORDER BY alunos.matricula ASC
+            LIMIT $start, $itemsPerPage", array(
+                ":QUERY" => ("%" . $query . "%")
+        ));   
+    }
+
+    public static function countPages($query = "" , $itemsPerPage = 10){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM alunos WHERE alunos.ativo = 1 AND alunos.nome LIKE :QUERY", array(
+            ":QUERY" => ("%" . $query . "%")
+        ));
+        return ceil(count($result)/ $itemsPerPage);
+
+    }
+
     public static function listOne($id){
         $sql = new Database();
         $result = $sql->select("SELECT * FROM alunos WHERE matricula = :MATRICULA", array(
