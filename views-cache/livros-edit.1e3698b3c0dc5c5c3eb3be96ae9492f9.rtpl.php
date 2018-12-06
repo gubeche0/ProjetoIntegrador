@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-2">
                         
-                        <img id="fotoLivro" src='<?php if( isset($livro) ){ ?>/res/img/livros_capas/<?php echo htmlspecialchars( $livro["urlfoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?>' class="img-thumbnail">
+                        <img id="fotoLivro" src='<?php if( isset($livro) ){ ?>/res/img/livros_capas/<?php echo htmlspecialchars( $livro["urlfoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?> <?php } ?>' alt="Capa do livro <?php echo htmlspecialchars( $livro['nome'], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="img-thumbnail">
                     </div>
                 </div>
 

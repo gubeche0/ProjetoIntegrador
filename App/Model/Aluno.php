@@ -33,7 +33,7 @@ class Aluno{
             ORDER BY alunos.matricula ASC
             LIMIT $start, $itemsPerPage", array(
                 ":QUERY" => ("%" . $query . "%")
-        ));   
+        ));
     }
 
     public static function countPages($query = "" , $itemsPerPage = 10){

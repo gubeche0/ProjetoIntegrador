@@ -59,7 +59,7 @@
             </div>
             <div class="col-2">
 
-                <img id="fotoLivro" src="" class="img-thumbnail">
+                <img id="fotoLivro" src="" alt="Capa do livro" class="img-thumbnail" style="display: none;">
             </div>
         </div>
 
@@ -149,6 +149,7 @@
 
                     if (e.livro.urlfoto) {
                         $("#fotoLivro").attr('src', '/res/img/livros_capas/' + e.livro.urlfoto);
+                        $("#fotoLivro").show();
                     }
                 } else {
                     livro = false;
@@ -161,6 +162,7 @@
                     $("#volumeLivro").val("");
                     $("#autorLivro").val("");
                     $("#fotoLivro").attr('src', "");
+                    $("#fotoLivro").hide();
                 }
             });
 

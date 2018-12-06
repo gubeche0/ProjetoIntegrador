@@ -66,27 +66,20 @@
 
                 </tbody>
             </table>
-            <nav aria-label="...">
+            <nav>
                 <ul class="pagination justify-content-end">
-                    <?php if( $page > 1 ){ ?>
-
-                        <li class="page-item">
+                        <li class='page-item <?php if( $page == 1 ){ ?>disabled<?php } ?>'>
                             <a class="page-link" href='/alunos?page=<?php echo htmlspecialchars( $page - 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>&query=<?php echo htmlspecialchars( $query, ENT_COMPAT, 'UTF-8', FALSE ); ?>'>Anterior</a>
                         </li>
-                    <?php } ?>
-
                     <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
 
                         <li class="page-item <?php if( $page == $value1['text'] ){ ?> active <?php } ?>"><a class='page-link' href='<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
                     <?php } ?>
 
-                    <?php if( count($pages) > $page ){ ?>
-
-                    <li class="page-item">
+                    <li class='page-item <?php if( count($pages) <= $page ){ ?>disabled<?php } ?>'>
                         <a class="page-link" href='/alunos?page=<?php echo htmlspecialchars( $page + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>&query=<?php echo htmlspecialchars( $query, ENT_COMPAT, 'UTF-8', FALSE ); ?>'>Proximo</a>
                     </li>
-                    <?php } ?>
-
+                    
                 </ul>
             </nav>
 

@@ -19,11 +19,30 @@ class ExemplarController extends Controller{
     
     public function pageIndex(){
         $query = isset($_GET["query"]) ? $_GET["query"] : "";
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
+        $itemsPerPage = 10;
         $this->getPage("exemplares");
+
+        $pages = [];
+
         
+
+        for ($i=0; $i < Exemplar::countPages($query, $itemsPerPage); $i++) { 
+            array_push($pages, [
+                'href'=>'/exemplares?'.http_build_query([
+                    'page'=>$i + 1,
+                    'query'=>$query
+                ]),
+                'text'=>$i + 1
+            ]);
+        }
         $this->page->setTpl("exemplares", array(
-            "exemplares" => Exemplar::listAll($query)
+            "exemplares" => Exemplar::listPage($page, $query, $itemsPerPage),
+            "page" => $page,
+            "pages" => $pages,
+            "query" => $query
         ));
+        
     }
 
     public function pageCreate(){

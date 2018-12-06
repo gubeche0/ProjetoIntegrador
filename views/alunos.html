@@ -58,21 +58,18 @@
                     {/loop}
                 </tbody>
             </table>
-            <nav aria-label="...">
+            <nav>
                 <ul class="pagination justify-content-end">
-                    {if="$page > 1"}
-                        <li class="page-item">
+                        <li class='page-item {if="$page == 1"}disabled{/if}'>
                             <a class="page-link" href='/alunos?page={$page - 1}&query={$query}'>Anterior</a>
                         </li>
-                    {/if}
                     {loop="$pages"}
                         <li class="page-item {if="$page == $value['text']"} active {/if}"><a class='page-link' href='{$value["href"]}'>{$value["text"]}</a></li>
                     {/loop}
-                    {if="count($pages) > $page"}
-                    <li class="page-item">
+                    <li class='page-item {if="count($pages) <= $page"}disabled{/if}'>
                         <a class="page-link" href='/alunos?page={$page + 1}&query={$query}'>Proximo</a>
                     </li>
-                    {/if}
+                    
                 </ul>
             </nav>
 

@@ -27,6 +27,34 @@ class Exemplar{
         
     }
 
+    public static function listPage($page, $query = "", $itemsPerPage = 10){
+
+        $start = ($page - 1) * $itemsPerPage;
+        $sql = new Database();
+
+        return $sql->select("SELECT exemplares.id, exemplares.status, livros.nome, livros.volume, livros.categoria, emprestimo
+            FROM exemplares 
+            INNER JOIN livros ON exemplares.livro = livros.isbn
+            LEFT JOIN (SELECT COUNT(*) as emprestimo, id_exemplar FROM emprestimos WHERE ativo = 1 GROUP BY id_exemplar) emprestimos ON exemplares.id = emprestimos.id_exemplar
+            WHERE livros.ativo = 1 AND exemplares.ativo = 1 
+            AND (exemplares.id LIKE :QUERY OR livros.nome LIKE :QUERY)
+            ORDER BY id ASC
+            LIMIT $start, $itemsPerPage", array(
+                ":QUERY" => ("%" . $query . "%")
+        ));
+        
+    }
+
+    public static function countPages($query = "" , $itemsPerPage = 10){
+        $sql = new Database();
+        $result = $sql->select("SELECT * FROM exemplares INNER JOIN livros ON exemplares.livro = livros.isbn WHERE exemplares.ativo = 1 AND (exemplares.id LIKE :QUERY OR livros.nome LIKE :QUERY)", array(
+            ":QUERY" => ("%" . $query . "%")
+        ));
+        return ceil(count($result)/ $itemsPerPage);
+
+    }
+
+
     public function loadById(){
         $sql = new Database();
         $result = $sql->select("SELECT * FROM exemplares WHERE id = :ID", array(

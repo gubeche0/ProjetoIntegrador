@@ -15,13 +15,14 @@
                     </div>
                 {/loop}
                 
-
+                <form>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="query" name="query" placeholder="Pesquisar Exemplar">
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
                         </div>
                     </div>
+                </form>
 
                 
                         
@@ -53,6 +54,20 @@
                         {/loop}
                     </tbody>
                 </table>
+                <nav>
+                    <ul class="pagination justify-content-end">
+                            <li class='page-item {if="$page == 1"}disabled{/if}'>
+                                <a class="page-link" href='/exemplares?page={$page - 1}&query={$query}'>Anterior</a>
+                            </li>
+                        {loop="$pages"}
+                            <li class="page-item {if="$page == $value['text']"} active {/if}"><a class='page-link' href='{$value["href"]}'>{$value["text"]}</a></li>
+                        {/loop}
+                        <li class='page-item {if="count($pages) <= $page"}disabled{/if}'>
+                            <a class="page-link" href='/exemplares?page={$page + 1}&query={$query}'>Proximo</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
                 
             </div>
         </div>
@@ -62,9 +77,9 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script> -->
     <script>
-        $("#query").quicksearch('table tbody tr')
+        // $("#query").quicksearch('table tbody tr')
         function excluir(id){
             var resposta = confirm("Deseja deletar o exemplar???");
             

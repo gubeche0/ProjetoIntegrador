@@ -21,13 +21,14 @@
                 <?php } ?>
 
                 
-
+                <form>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="query" name="query" placeholder="Pesquisar Exemplar">
                         <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+                            <button type="submit" class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
                         </div>
                     </div>
+                </form>
 
                 
                         
@@ -61,6 +62,22 @@
 
                     </tbody>
                 </table>
+                <nav>
+                    <ul class="pagination justify-content-end">
+                            <li class='page-item <?php if( $page == 1 ){ ?>disabled<?php } ?>'>
+                                <a class="page-link" href='/exemplares?page=<?php echo htmlspecialchars( $page - 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>&query=<?php echo htmlspecialchars( $query, ENT_COMPAT, 'UTF-8', FALSE ); ?>'>Anterior</a>
+                            </li>
+                        <?php $counter1=-1;  if( isset($pages) && ( is_array($pages) || $pages instanceof Traversable ) && sizeof($pages) ) foreach( $pages as $key1 => $value1 ){ $counter1++; ?>
+
+                            <li class="page-item <?php if( $page == $value1['text'] ){ ?> active <?php } ?>"><a class='page-link' href='<?php echo htmlspecialchars( $value1["href"], ENT_COMPAT, 'UTF-8', FALSE ); ?>'><?php echo htmlspecialchars( $value1["text"], ENT_COMPAT, 'UTF-8', FALSE ); ?></a></li>
+                        <?php } ?>
+
+                        <li class='page-item <?php if( count($pages) <= $page ){ ?>disabled<?php } ?>'>
+                            <a class="page-link" href='/exemplares?page=<?php echo htmlspecialchars( $page + 1, ENT_COMPAT, 'UTF-8', FALSE ); ?>&query=<?php echo htmlspecialchars( $query, ENT_COMPAT, 'UTF-8', FALSE ); ?>'>Proximo</a>
+                        </li>
+                        
+                    </ul>
+                </nav>
                 
             </div>
         </div>
@@ -70,9 +87,9 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script> -->
     <script>
-        $("#query").quicksearch('table tbody tr')
+        // $("#query").quicksearch('table tbody tr')
         function excluir(id){
             var resposta = confirm("Deseja deletar o exemplar???");
             
