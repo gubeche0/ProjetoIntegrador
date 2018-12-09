@@ -19,7 +19,7 @@
             <form method="post" id="form">
 
                     <div class="form-group row">
-                        <label for="nome" class="col-sm-2 col-form-label">Matricula:</label>
+                        <label for="matricula" class="col-sm-2 col-form-label">Matricula:</label>
                         <div class="col-sm-10">
         
                             <input type="number" name="matricula" id="matricula" class="form-control" placeholder="Matricula" required <?php if( isset($aluno) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?> value=<?php if( isset($aluno) ){ ?><?php echo htmlspecialchars( $aluno["matricula"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php }else{ ?>""<?php } ?>>

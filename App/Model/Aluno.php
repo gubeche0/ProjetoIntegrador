@@ -38,7 +38,12 @@ class Aluno{
 
     public static function countPages($query = "" , $itemsPerPage = 10){
         $sql = new Database();
-        $result = $sql->select("SELECT * FROM alunos WHERE alunos.ativo = 1 AND alunos.nome LIKE :QUERY", array(
+        $result = $sql->select("SELECT * 
+        FROM alunos WHERE alunos.ativo = 1 AND 
+        (
+            alunos.nome LIKE :QUERY OR 
+            alunos.matricula LIKE :QUERY 
+        )", array(
             ":QUERY" => ("%" . $query . "%")
         ));
         return ceil(count($result)/ $itemsPerPage);

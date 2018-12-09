@@ -1,7 +1,7 @@
 <?php if(!class_exists('Rain\Tpl')){exit;}?><nav class="navbar navbar-inverse navbar-expand-xl navbar-dark mb-4" style="background-color: green;">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/res/img/if2.png" height="30" class="d-inline-block align-top">
+                <img src="/res/img/if2.png" alt="Logo do IFRS" height="30" class="d-inline-block align-top">
                 IFRS
             </a>
 

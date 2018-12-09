@@ -19,14 +19,17 @@ $(document).ready(function (){
                 
             },
             volume:{
-                required: true,
+                required: true
             },
             autor:{
-                required: true,
+                required: true
             },
             abreviacao:{
-                required: true,
+                required: true
             },
+            quantidade:{
+                required: true
+            }
         },
     })
 });

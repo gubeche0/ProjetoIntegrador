@@ -21,7 +21,7 @@
             <div class="col">
                 <div class="form-group row">
 
-                    <label for="nome" class="col-sm-2 col-form-label">Codigo de barras:</label>
+                    <label for="exemplar" class="col-sm-2 col-form-label">Codigo de barras:</label>
                     <div class="col-sm-10">
 
                         <input type="number" name="exemplar" id="exemplar" class="form-control" placeholder="Codigo de barras"
@@ -35,7 +35,7 @@
 
                 <div class="form-group row">
 
-                    <label for="nome" class="col-sm-2 col-form-label">Nome do livro:</label>
+                    <label for="nomeLivro" class="col-sm-2 col-form-label">Nome do livro:</label>
                     <div class="col-sm-10">
 
                         <input type="text" name="nomeLivro" id="nomeLivro" class="form-control" placeholder="Nome do Livro"
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group row">
 
-                    <label for="nome" class="col-sm-2 col-form-label">Volume do livro:</label>
+                    <label for="volumeLivro" class="col-sm-2 col-form-label">Volume do livro:</label>
                     <div class="col-sm-10">
 
                         <input type="text" name="volumeLivro" id="volumeLivro" class="form-control" placeholder="Volume do Livro"
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group row">
 
-                    <label for="nome" class="col-sm-2 col-form-label">Autor do livro:</label>
+                    <label for="autorLivro" class="col-sm-2 col-form-label">Autor do livro:</label>
                     <div class="col-sm-10">
 
                         <input type="text" name="autorLivro" id="autorLivro" class="form-control" placeholder="Autor do Livro"
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group row">
 
-                    <label for="nome" class="col-sm-2 col-form-label">Status do livro:</label>
+                    <label for="statusLivro" class="col-sm-2 col-form-label">Status do livro:</label>
                     <div class="col-sm-10">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="statusLivro" name="statusLivro" checked>
@@ -74,14 +74,14 @@
             </div>
             <div class="col-2">
 
-                <img id="fotoLivro" src="" class="img-thumbnail">
+                <img id="fotoLivro" src="" alt="Capa do livro" class="img-thumbnail" style="display: none;">
             </div>
         </div>
 
         <h2 class="text-center my-4">Aluno</h2>
         <div class="form-group row">
 
-            <label for="nome" class="col-sm-2 col-form-label">Nome do Aluno:</label>
+            <label for="aluno" class="col-sm-2 col-form-label">Nome do Aluno:</label>
             <div class="col-sm-10">
 
                 <input type="text" name="aluno" id="aluno" class="form-control" placeholder="Nome do Aluno" disabled>
@@ -89,7 +89,7 @@
         </div>
         <div class="form-group row">
 
-            <label for="nome" class="col-sm-2 col-form-label">Matricula do Aluno:</label>
+            <label for="matricula" class="col-sm-2 col-form-label">Matricula do Aluno:</label>
             <div class="col-sm-10">
 
                 <input type="text" name="matricula" id="matricula" class="form-control" placeholder="Matricula do Aluno"
@@ -99,7 +99,7 @@
 
         <div class="form-group row">
 
-            <label for="nome" class="col-sm-2 col-form-label">Data do emprestimo:</label>
+            <label for="data" class="col-sm-2 col-form-label">Data do emprestimo:</label>
             <div class="col-sm-10">
 
                 <input type="date" name="data" id="data" class="form-control" disabled>
@@ -182,6 +182,7 @@
 
                     if (e.livro.urlfoto) {
                         $("#fotoLivro").attr('src', '/res/img/livros_capas/' + e.livro.urlfoto);
+                        $("#fotoLivro").show();
                     }
                 } else {
                     livro = false;
@@ -198,6 +199,8 @@
                     $("#aluno").val("");
                     $("#matricula").val("");
                     $("#data").val("");
+                    $("#fotoLivro").attr('src', "");
+                    $("#fotoLivro").hide();
                 }
             });
 

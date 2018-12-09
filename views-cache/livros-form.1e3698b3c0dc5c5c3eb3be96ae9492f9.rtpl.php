@@ -20,7 +20,7 @@
                     
                     <div class="form-group row">
         
-                        <label for="nome" class="col-sm-2 col-form-label">ISBN:</label>
+                        <label for="isbn" class="col-sm-2 col-form-label">ISBN:</label>
                         <div class="col-sm-10">
         
                             <input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["isbn"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>' <?php if( isset($livro) ){ ?>readonly<?php }else{ ?>autofocus<?php } ?>>
@@ -38,7 +38,7 @@
 
                     <div class="form-group row">
         
-                        <label for="nome" class="col-sm-2 col-form-label">Volume:</label>
+                        <label for="volume" class="col-sm-2 col-form-label">Volume:</label>
                         <div class="col-sm-10">
         
                             <input type="text" name="volume" id="volume" class="form-control" placeholder="Volume" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["volume"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
@@ -47,7 +47,7 @@
 
                     <div class="form-group row">
         
-                        <label for="nome" class="col-sm-2 col-form-label">Autor:</label>
+                        <label for="autor" class="col-sm-2 col-form-label">Autor:</label>
                         <div class="col-sm-10">
         
                             <input type="text" name="autor" id="autor" class="form-control" placeholder="autor" required value='<?php if( isset($livro) ){ ?><?php echo htmlspecialchars( $livro["autor"], ENT_COMPAT, 'UTF-8', FALSE ); ?><?php } ?>'>
@@ -69,10 +69,10 @@
 
                     <div class="form-group row">
         
-                        <label for="nome" class="col-sm-2 col-form-label">Foto do livro:</label>
+                        <label for="foto" class="col-sm-2 col-form-label">Foto do livro:</label>
                         <div class="col-sm-10">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="foto" name="foto">
+                                <input type="file" class="custom-file-input" id="foto" name="foto" >
                                 <label class="custom-file-label" for="foto">Escolher arquivo</label>
                               </div>
                             
@@ -108,6 +108,7 @@
     <script>
         $(document).ready(function(){
             $("#categoria").chosen();
+            
         });
     </script>
 </body>
