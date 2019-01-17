@@ -116,9 +116,12 @@ class ExemplarController extends Controller{
     }
 
     public function delete($id){
+        $page = isset($_GET["page"]) ? $_GET["page"] : "";
+        $query = isset($_GET["query"]) ? $_GET["query"] : "";
+        
         $this->exemplar->setId($id);
         $this->exemplar->delete();
-        header("Location: /exemplares");
+        header("Location: /exemplares?page={$page}&query={$query}");
         exit;
     }
 
