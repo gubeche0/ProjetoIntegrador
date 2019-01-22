@@ -109,9 +109,11 @@ class AlunoController extends Controller{
     }
 
     public function delete($matricula){
+        $page = isset($_GET["page"]) ? $_GET["page"] : "";
+        $query = isset($_GET["query"]) ? $_GET["query"] : "";
         $this->aluno->setMatricula($matricula);
         $this->aluno->delete();
-        header("Location: /alunos");
+        header("Location: /alunos?page={$page}&query={$query}");
         exit;
     }
 

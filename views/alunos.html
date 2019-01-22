@@ -101,7 +101,7 @@
             focusCancel: true
         }).then((result) => {
             if (result.value) {
-                window.location.href = '/alunos/' + id + '/delete';
+                window.location.href = '/alunos/' + id + '/delete?page={$page}&query={$query}';
             }
 
         })
