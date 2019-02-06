@@ -84,7 +84,11 @@
         $aluno->delete($id);
     });
 
-
+    $app->get("/alunos/:id/info", function($id){
+        UserController::verifyLogin();
+        $aluno = new AlunoController();
+        $aluno->pageInfo($id);
+    });
 
 
     // Categorias

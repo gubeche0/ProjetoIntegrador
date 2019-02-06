@@ -89,6 +89,7 @@ CREATE TABLE emprestimos(
     matricula_aluno BIGINT not null,
     periodo_entrega tinyint,
     dataregistro  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    dataentrega timestamp,
     idfuncionario int not null,
 
 	ativo bool not null default 1,

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Page;
 use App\Model\Aluno;
 use App\Model\Curso;
+use App\Model\Emprestimo;
 
 
 class AlunoController extends Controller{
@@ -43,6 +44,20 @@ class AlunoController extends Controller{
             "page" => $page,
             "pages" => $pages,
             "query" => $query
+        ));
+    }
+
+    public function pageInfo($id){
+        $this->aluno->setMatricula($id);
+        $this->aluno->loadById();
+
+
+        $this->getPage("alunos", array(
+            "footer" => false
+        ));
+        $this->page->setTpl("alunos-info", array(
+            "aluno" => $this->aluno->getValues(),
+            "emprestimos" => Emprestimo::listAllOf($this->aluno)
         ));
     }
 

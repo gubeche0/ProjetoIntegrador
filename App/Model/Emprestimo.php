@@ -47,9 +47,16 @@ class Emprestimo{
         }
 
         $this->setValues($result[0]);
-        
-        
-        
+    }
+
+    static public function listAllOf(Aluno $aluno){
+        $sql = new Database();
+        return $sql->select("SELECT emprestimos.id, emprestimos.dataregistro, emprestimos.dataentrega, emprestimos.periodo_entrega, exemplares.id as codigo, livros.nome as livro, alunos.nome as aluno, emprestimos.ativo
+            FROM emprestimos INNER JOIN exemplares INNER JOIN livros INNER JOIN alunos 
+            ON emprestimos.id_exemplar = exemplares.id AND exemplares.livro = livros.isbn AND emprestimos.matricula_aluno = alunos.matricula 
+            WHERE alunos.matricula = :MATRICULA ORDER BY emprestimos.ativo DESC ,emprestimos.dataregistro DESC", array(
+            ":MATRICULA" => $aluno->getMatricula()
+        ));
     }
 
     public function create(){
@@ -98,12 +105,12 @@ class Emprestimo{
 
     public function devolver($id, $statusLivro = "Utilizavel", $idExemplar = NULL){
         $sql = new Database();
-        $sql->query("UPDATE emprestimos set ativo=0 WHERE id = :ID", array(
+        $sql->query("UPDATE emprestimos set ativo=0, dataentrega=NOW() WHERE id = :ID", array(
             ":ID" => $id
         ));
         if($statusLivro == "Não Utilizavel"){
             
-            $a = $sql->query("UPDATE exemplares set ativo=0, `status`=:STATUS WHERE id = :ID", array(
+            $a = $sql->query("UPDATE exemplares set ativo=0, `status`=:STATUS, dataentrega=NOW() WHERE id = :ID", array(
                 ":ID" => $idExemplar,
                 ":STATUS" => $statusLivro
             ));
