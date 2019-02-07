@@ -51,12 +51,14 @@ class AlunoController extends Controller{
         $this->aluno->setMatricula($id);
         $this->aluno->loadById();
 
-
+        $aluno = $this->aluno->getValues();
+        $curso = Curso::listOne($aluno["idcurso"]);
         $this->getPage("alunos", array(
             "footer" => false
         ));
         $this->page->setTpl("alunos-info", array(
             "aluno" => $this->aluno->getValues(),
+            "curso" => $curso,
             "emprestimos" => Emprestimo::listAllOf($this->aluno)
         ));
     }
